@@ -1,3 +1,5 @@
+console.log(jsonData);
+
 // Sample data for the menu items
 const menuItems = [
     // All Day Breakfast
