@@ -55,6 +55,16 @@
             <!-- Menu side -->
             <div class="menu-side">
                 <!-- Menu items will be placed here -->
+                {% for item in breakfast %}
+                <div class = "menu-item">
+                <label>{{item.name}}</label>
+                <img onclick=addToCheck() src={{item.imageURL.url}} />
+                <label>{{item.price}}</label>
+                {% if item.stock == 0 %}
+                <label> Out of stock </label>
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
 
@@ -72,7 +82,5 @@
             <button class="checkout-btn">Checkout</button>
         </div>
     </div>
-    <script> var jsonData = {{breakfast|safe}} </script>
-    <script src="{% static 'js\order.js' %}"></script>
 </body>
 </html>
