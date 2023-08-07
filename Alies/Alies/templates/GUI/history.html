@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Page</title>
+    <link rel="stylesheet" href="{% static 'css\history.css' %}">
+</head>
+<body>
+    <!-- Menubar -->
+    <div class="menubar">
+        <!-- Add your menu bar content here -->
+        <div class="menu-left">
+            <img src="{% static 'media\logo.png' %}" alt="Left Image">
+        </div>
+        <div class="menu-center">
+            <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
+        </div>
+        <div class="menu-right">
+            <a href="{% static 'media\dashboard.html' %}" class="rtnbtn">Return</a>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Rectangular tabs for different transaction orders -->
+            <div class="transaction-tab">Order #123</div>
+            <div class="transaction-tab">Order #124</div>
+            <div class="transaction-tab">Order #125</div>
+            <!-- Add more transaction tabs as needed -->
+        </div>
+
+        <!-- Order details -->
+        <div class="main-content">
+            <!-- Order details will be displayed here -->
+            <div class="order-details">
+                <h2>Order #123</h2>
+                <p>Total: ₱250.00</p>
+                <p>Payment: Credit Card</p>
+                <!-- Display more order details here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js\history.js' %}"></script>
+</body>
+</html>

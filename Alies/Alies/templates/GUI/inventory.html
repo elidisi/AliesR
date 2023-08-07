@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Page</title>
+    <link rel="stylesheet" href="{% static 'css\inventory.css' %}">
+</head>
+<body>
+    <!-- Menubar -->
+    <div class="menubar">
+        <!-- Add your menu bar content here -->
+        <div class="menu-left">
+            <img src="logo.png" alt="Left Image">
+        </div>
+        <div class="menu-center">
+            <img src="mlogo.png" alt="Center Image">
+        </div>
+        <div class="menu-right">
+            <a href="dashboard.html" class="rtnbtn">Return</a>
+        </div>
+    </div>
+
+    <!-- Inventory List -->
+    <div class="inventory-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Quantity</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td><input type="text" value="Item 1"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td><input type="text" value="Item 2"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Repeat for more rows... -->
+                <!-- Row 3 -->
+                <tr>
+                    <td><input type="text" value="Item 3"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td><input type="text" value="Item 4"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td><input type="text" value="Item 5"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td><input type="text" value="Item 6"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 7 -->
+                <tr>
+                    <td><input type="text" value="Item 7"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td><input type="text" value="Item 8"></td>
+                    <td class="center"><input type="number" value="0"></td>
+                    <td class="center">
+                        <button class="add-btn">Add</button>
+                        <button class="remove-btn">Remove</button>
+                    </td>
+                </tr>
+                <!-- Repeat for more rows... -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'js\inventory.js' %}"></script>
+</body>
+</html>

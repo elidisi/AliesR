@@ -1,0 +1,50 @@
+/* The body styles to center the login container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #faf0ca; /* Change the background color here */
+  }
+  
+  /* The container holding the login elements */
+  .login-container {
+    text-align: center;
+    background-color: #faf0ca; /* Change the container background color here */
+  }
+  
+  /* The logo image styles */
+  .login-container img {
+    /*max-width: 70px;*/
+    margin-bottom: 20px; /* Adjust the space between the image and the inputs */
+  }
+  
+  /* The input box styles */
+  .input-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* The input field styles */
+  .input-box input {
+    padding: 10px;
+    margin-bottom: 10px; /* Adjust the space between the inputs */
+    border: 1px solid #ccc; /* Change the input border color here */
+    border-radius: 4px;
+  }
+  
+  /* The button styles */
+  .input-box button {
+    padding: 10px;
+    background-color: #F4D35E; /* Change the button background color here */
+    color: #fff; /* Change the button text color here */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Optional: Add hover effects */
+  .input-box button:hover {
+    background-color: #0056b3; /* Change the button background color on hover */
+  }

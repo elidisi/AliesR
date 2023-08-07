@@ -1,0 +1,41 @@
+/* Add your CSS styles for the checkout page here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #D6D3CE;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px;
+}
+
+.cart-items {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid #875D0F;
+    background-color: #EEC06A;
+    border-radius: 5px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    margin: 5px;
+}
+
+.cart-item-remove {
+    color: red;
+    cursor: pointer;
+}
+
+.total {
+    text-align: right;
+    margin-top: 20px;
+    font-weight: bold;
+}

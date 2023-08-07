@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordering Page</title>
+    <link rel="stylesheet" href="{% static 'css\order.css' %}">
+</head>
+<body>
+    <!-- Menubar -->
+    <div class="menubar">
+        <!-- Add your menu bar content here -->
+        <div class="menu-left">
+            <img src="{% static 'media\logo.png' %}" alt="Left Image">
+        </div>
+        <div class="menu-center">
+            <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
+        </div>
+        <div class="menu-right">
+        <a href="/dashboard" class="rtnbtn">Return</a>
+        </div>
+    </div>
+
+
+    <!-- Main content -->
+    <div class="container">
+        <!-- Left-side menu and categories -->
+        <div class="left-side">
+            <!-- Categories -->
+            <div class="categories">
+                <!-- Original categories -->
+                <div class="category" data-category="breakfast">Breakfast</div>
+                <div class="category" data-category="noodles">Noodles</div>
+                <div class="category" data-category="sisig">Sisig</div>
+                <div class="category" data-category="yangchow">Yangchow</div>
+                <div class="category" data-category="wings">Wings</div>
+
+                <!-- Additional categories -->
+                <div class="category" data-category="pork">Pork</div>
+                <div class="category" data-category="chicken">Chicken</div>
+                <div class="category" data-category="beef">Beef</div>
+                <div class="category" data-category="seafood">Seafood</div>
+                <div class="category" data-category="vegetable">Vegetable</div>
+
+                <!-- New categories -->
+                <div class="category" data-category="snacks">Snacks</div>
+                <div class="category" data-category="addon">Add Ons</div>
+                <div class="category" data-category="drinks">Drinks</div>
+
+                <!-- Search category -->
+                <div class="category search-category">Search</div>
+            </div>
+
+            <!-- Menu side -->
+            <div class="menu-side">
+                <!-- Menu items will be placed here -->
+            </div>
+        </div>
+
+        <!-- Right-side cart -->
+        <div class="right-side">
+            <h2>Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically added/removed here -->
+            </div>
+            <div class="cart-total">
+                <!-- Total amount and checkout button here -->
+                Total: ₱0.00
+            </div>
+            <button class="clear-cart-btn">Clear Cart</button>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <script src="{% static 'media\order.js' %}"></script>
+</body>
+</html>

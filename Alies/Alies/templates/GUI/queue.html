@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Page</title>
+    <link rel="stylesheet" href="{% static 'css\queue.css' %}">
+</head>
+<body>
+    <!-- Menubar -->
+    <div class="menubar">
+        <!-- Add your menu bar content here -->
+        <div class="menu-left">
+            <img src="{% static 'media\logo.png' %}" alt="Left Image">
+        </div>
+        <div class="menu-center">
+            <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
+        </div>
+        <div class="menu-right">
+            <a href="/dashboard" class="rtnbtn">Return</a>
+        </div>
+    </div>
+
+    <!-- Queue Area -->
+    <div class="queue-area">
+        <!-- Symmetrical boxes for queuing -->
+        <div class="queue-box">
+            <h3>Order #123</h3>
+            <p>Total: ₱250.00</p>
+            <p>Payment: Credit Card</p>
+        </div>
+        <!-- Repeat the queue-box structure for other orders -->
+        <div class="queue-box">
+            <h3>Order #124</h3>
+            <p>Total: ₱150.00</p>
+            <p>Payment: Cash</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #125</h3>
+            <p>Total: ₱180.00</p>
+            <p>Payment: PayPal</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #126</h3>
+            <p>Total: ₱210.00</p>
+            <p>Payment: Credit Card</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #127</h3>
+            <p>Total: ₱120.00</p>
+            <p>Payment: Cash</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #128</h3>
+            <p>Total: ₱300.00</p>
+            <p>Payment: PayPal</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #129</h3>
+            <p>Total: ₱180.00</p>
+            <p>Payment: Cash</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #130</h3>
+            <p>Total: ₱210.00</p>
+            <p>Payment: Credit Card</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #131</h3>
+            <p>Total: ₱120.00</p>
+            <p>Payment: Cash</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #132</h3>
+            <p>Total: ₱300.00</p>
+            <p>Payment: PayPal</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #133</h3>
+            <p>Total: ₱250.00</p>
+            <p>Payment: Credit Card</p>
+        </div>
+        <div class="queue-box">
+            <h3>Order #134</h3>
+            <p>Total: ₱150.00</p>
+            <p>Payment: Cash</p>
+        </div>
+    </div>
+
+    <script src="{% static 'js\queue.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css\styles.css' %} ">
+</head>
+<body>
+  <!--<div>
+    {% for item in breakfast %}
+    <div>
+    {{item.name}}
+    </div>
+    {% endfor %}
+  </div>-->
+  <form action="/history" request="POST">
+    <input type="textfield" />
+    <button type="submit">Submit</button>
+  </form>
+  
+  <header>
+    <img src="{% static 'media\mlogo.png' %}" height="100px">
+  </header>
+  <div class="dashboard">
+    <div class="top-row">
+      <a href="/order" class="btn">Order</a>
+      <a href="/queue" class="btn">Queue</a>
+      <a href="/inventory" class="btn">Inventory</a>
+    </div>
+    <div class="bottom-row">
+      <a href="/pricebook" class="btn">Pricebook</a>
+      <a href="/history" class="btn">History</a>
+    </div>
+  </div>
+</body>
+</html>

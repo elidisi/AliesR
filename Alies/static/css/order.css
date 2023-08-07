@@ -1,0 +1,212 @@
+/* CSS for the ordering page */
+
+/* Reset some default styles and set the font-family */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling for the menu bar at the top */
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #875D0F;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Styling for the left image in the menu bar */
+.menu-left img {
+    max-height: 100px;
+}
+
+/* Styling for the center image in the menu bar */
+.menu-center img {
+    max-height: 100px;
+}
+
+/* Styling for the return button in the menu bar */
+.rtnbtn{
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+} 
+/* Wrapper for the main content */
+.container {
+    display: flex;
+    width: 100%;
+    height: 600px; /* Set a fixed initial height for the container */
+    max-height: 600px; /* Set the maximum height for the container */
+    background-color: #D6D3CE; /* Background color of the container */
+    overflow: hidden; /* Hide content that overflows the container */
+}
+
+/* Styling for the left side, which includes the categories and menu items */
+.left-side {
+    flex: 2; /* Adjust the size of the left side */
+    display: flex;
+    flex-direction: column;
+    background-color: #EEC06A; /* Background color of the left side */
+    padding: 10px;
+    overflow-y: auto; /* Enable vertical scrollbar when content exceeds the container's height */
+    border: 2px solid;
+}
+
+/* Styling for the categories bar on the left side */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns in the first row */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    grid-gap: 10px;
+    justify-content: center;
+    background-color: #EEC06A; /* Background color of the categories bar */
+    padding: 8px;
+}
+
+/* Styling for each individual category */
+.categories .category {
+    cursor: pointer;
+    padding: 8px 13px;
+    background-color: #EEC06A; /* Background color of each category */
+    border: solid black 3px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Styling for the menu side on the left side, where the menu items are displayed */
+.menu-side {
+    flex: 1.5; /* Adjust the size of the menu side */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin-top: 10px; /* Add a margin to separate from the categories bar */
+    background-color: #D6D3CE; /* Background color of the menu */
+    border: solid black 3px;
+
+}
+
+/* Styling for each individual menu item */
+.menu-item {
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Styling for the images in the menu items */
+.menu-item img {
+    max-width: 150px;
+    max-height: 150px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the name and price of the menu items */
+.menu-item-details {
+    text-align: center;
+}
+
+/* Styling for the right side, which includes the cart */
+.right-side {
+    flex: 1; /* Adjust the size of the right side */
+    background-color: #EEC06A; /* Background color of the right side */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid;
+}
+
+/* Styling for the cart items container */
+.cart-items {
+    flex: 1; /* Fill the available vertical space within the right-side container */
+    overflow-y: auto; /* Enable vertical scrollbar when content exceeds the container's height */
+    background-color: #D6D3CE; /* Background color of the menu */
+    border: solid black 3px;
+}
+
+/* Styling for each individual item in the cart */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    margin: 5px;
+}
+
+/* Styling for the remove button in the cart items */
+.cart-item-remove {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Styling for the cart total section */
+.cart-total {
+    text-align: right;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Styling for the checkout button */
+.checkout-btn {
+    background-color: greenyellow; /* Background color of the checkout button */
+    color: black; /* Text color of the checkout button */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Styling for the clear cart button */
+.clear-cart-btn {
+    background-color: red; /* Background color of the clear cart button */
+    color: black; /* Text color of the clear cart button */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Styling for the images in the menu items */
+.menu-item .image-container {
+    width: 200px; /* Set a fixed width for the image container */
+    height: 250px; /* Set a fixed height for the image container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
+  .menu-item img {
+    max-width: 150px;
+    max-height: 150px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the name of the menu items */
+  .menu-item .item-name {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+

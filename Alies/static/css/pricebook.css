@@ -1,0 +1,114 @@
+/* Reset some default styles and set the font-family */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #D6D3CE;
+}
+
+/* Styling for the menu bar at the top */
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #875D0F;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Styling for the left image in the menu bar */
+.menu-left img {
+    max-height: 100px;
+}
+
+/* Styling for the center link in the menu bar */
+.menu-center img {
+    max-height: 100px;
+}
+
+/* Styling for the right image in the menu bar */
+.menu-right img {
+    max-height: 100px;
+}
+
+/* Styling for the return button */
+.rtnbtn {
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+}
+
+/* Styling for the main container */
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px; /* Set the maximum width */
+    margin: 0 auto; /* Center the container */
+    background-color: #D6D3CE;
+    padding: 20px;
+}
+
+/* Styling for the inventory list */
+.inventory-list {
+    margin: 20px auto;
+    max-width: 800px; /* Set the maximum width for the list */
+    background-color: #EEC06A;
+    border: solid black 3px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Styling for table header cells */
+th {
+    background-color: #D6D3CE;
+    border: solid black 3px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Styling for table data cells */
+td {
+    border: solid black 3px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Styling for input fields in table cells */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+/* Center the quantity input */
+.center {
+    text-align: center;
+}
+
+/* Styling for the add and remove buttons */
+.add-btn,
+.remove-btn {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #EEC06A;
+    color: black;
+}
+
+/* Add more styles or adjustments as needed */

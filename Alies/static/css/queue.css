@@ -1,0 +1,83 @@
+/* Reset some default styles and set the font-family */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #D6D3CE; /* Match the background color of order.html */
+}
+
+/* Styling for the menu bar at the top */
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #875D0F;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Styling for the left image in the menu bar */
+.menu-left img {
+    max-height: 100px;
+}
+
+/* Styling for the center link in the menu bar */
+.menu-center img {
+    max-height: 100px;
+}
+
+/* Styling for the right image in the menu bar */
+.menu-left img {
+    max-height: 100px;
+}
+
+/* Include the styles from your existing order.css */
+
+/* Styling for the return button */
+.rtnbtn {
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+    transform: scaleX(-1); /* Flip the button horizontally */
+    /* Adjust the order property to move it to the right */
+    order: 3;
+}
+
+/* Styling for the queue area */
+.queue-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #D6D3CE; /* Match the background color of order.html */
+}
+
+/* Styling for the queue boxes */
+.queue-box {
+    width: 200px;
+    height: 200px;
+    background-color: #EEC06A;
+    border: solid black 3px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Styling for the queue-box content */
+.queue-box h3 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Styling for the queue-box payment details */
+.queue-box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
