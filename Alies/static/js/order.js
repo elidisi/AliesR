@@ -1,19 +1,17 @@
-console.log(jsonData);
-
 // Sample data for the menu items
 const menuItems = [
     // All Day Breakfast
-    { name: 'Hotsilog', price: 85, imageURL: 'menupics/breakfast/hotsilog.png', category: 'breakfast' },
-    { name: 'Cornsilog', price: 100, imageURL: 'menupics/breakfast/cornsilog.png', category: 'breakfast' },
-    { name: 'Spamsilog', price: 110, imageURL: 'menupics/breakfast/spamsilog.jpg', category: 'breakfast' },
-    { name: 'Tocilog ', price: 100, imageURL: 'menupics/breakfast/tocilog.png', category: 'breakfast' },
-    { name: 'Longsilog ', price: 100, imageURL: 'menupics/breakfast/longsilog.png', category: 'breakfast' },
-    { name: 'Tapsilog ', price: 130, imageURL: 'menupics/breakfast/tapsilog.jpg', category: 'breakfast' },
-    { name: 'Porksilog ', price: 140, imageURL: 'menupics/breakfast/porksilog.jpg', category: 'breakfast' },
-    { name: 'Bangsilog ', price: 150, imageURL: 'menupics/breakfast/bangsilog.jpg', category: 'breakfast' },
-    { name: 'Chicksilog ', price: 140, imageURL: 'menupics/breakfast/chicsilog.jpg', category: 'breakfast' },
-    { name: 'Coffee ', price: 20, imageURL: 'menupics/breakfast/coffee.jpg', category: 'breakfast' },
-    { name: 'Ice Tea ', price: 20, imageURL: 'menupics/breakfast/icetea.jpeg', category: 'breakfast' },
+    { name: 'Hotsilog', price: 85, imageURL: './menupics/breakfast/hotsilog.png', category: 'breakfast' },
+    { name: 'Cornsilog', price: 100, imageURL: './menupics/breakfast/cornsilog.png', category: 'breakfast' },
+    { name: 'Spamsilog', price: 110, imageURL: './menupics/breakfast/spamsilog.jpg', category: 'breakfast' },
+    { name: 'Tocilog ', price: 100, imageURL: './menupics/breakfast/tocilog.png', category: 'breakfast' },
+    { name: 'Longsilog ', price: 100, imageURL: './menupics/breakfast/longsilog.png', category: 'breakfast' },
+    { name: 'Tapsilog ', price: 130, imageURL: './menupics/breakfast/tapsilog.jpg', category: 'breakfast' },
+    { name: 'Porksilog ', price: 140, imageURL: './menupics/breakfast/porksilog.jpg', category: 'breakfast' },
+    { name: 'Bangsilog ', price: 150, imageURL: './menupics/breakfast/bangsilog.jpg', category: 'breakfast' },
+    { name: 'Chicksilog ', price: 140, imageURL: './menupics/breakfast/chicsilog.jpg', category: 'breakfast' },
+    { name: 'Coffee ', price: 20, imageURL: './menupics/breakfast/coffee.jpg', category: 'breakfast' },
+    { name: 'Ice Tea ', price: 20, imageURL: './menupics/breakfast/icetea.jpeg', category: 'breakfast' },
 
     // Noodles
     { name: 'Pancit Bihon', price: 150, imageURL: 'menupics/noodles/bihon.jpg', category: 'noodles' },
