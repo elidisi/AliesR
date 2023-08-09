@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +30,11 @@
             <!-- Categories -->
             <div class="categories">
                 <!-- Original categories -->
-                <div class="category" data-category="breakfast">Breakfast</div>
-                <div class="category" data-category="noodles">Noodles</div>
-                <div class="category" data-category="sisig">Sisig</div>
-                <div class="category" data-category="yangchow">Yangchow</div>
-                <div class="category" data-category="wings">Wings</div>
+                <div class="category" onclick="showitem(this.dataset.category);" data-category="breakfast" >Breakfast</div>
+                <div class="category" onclick="showitem(this.dataset.category);" data-category="noodles">Noodles</div>
+                <div class="category" onclick="showitem(this.dataset.category);" data-category="sisig">Sisig</div>
+                <div class="category" onclick="showitem(this.dataset.category);" data-category="yangchow">Yangchow</div>
+                <div class="category" onclick="showitem(this.dataset.category);" data-category="wings">Wings</div>
 
                 <!-- Additional categories -->
                 <div class="category" data-category="pork">Pork</div>
@@ -50,29 +50,199 @@
 
                 <!-- Search category -->
                 <div class="category search-category">Search</div>
+
+                <script>
+                    function showitem(id){
+                        var name = [];
+                        var imageurl = [];
+                        var price = [];
+                        var stock = [];
+
+                        //switch case per  item
+                        switch(id){
+                            case 'breakfast':
+                            var name = [
+                                {%for item in breakfast%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in breakfast%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in breakfast%}
+                                '{{item.price}}',
+                                {% endfor %}];
+
+                                var stock = [
+                                {%for item in breakfast%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                         case 'noodles':
+                            var name = [
+                                {%for item in noodles%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in noodles%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in noodles%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in noodles%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                         case 'yangchow':
+                            var name = [
+                                {%for item in yangchow%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in yangchow%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in yangchow%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in breakfast%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+            
+                            default:
+                            alert("There has been an error. Try again");
+                        }
+                    
+                        
+                    
+                    var reference = document.getElementById('menulist');
+                    reference.innerHTML = "";
+
+                    //adds items to order based on category using for loop
+                        for(let i = 0; i < name.length; i++){
+                            if (stock[i] == 0){
+                                //alters image not yet
+                                reference.innerHTML += `<div name="${name[i]}" class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
+                            }else if(stock[i] < 3){
+                                reference.innerHTML += `<div name="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
+                                //alters image not yet
+
+                            }else{
+                                reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">${price[i]}</label></div>`;
+
+                            }
+                        };
+                        
+                    }
+
+            function addToCart(category, name, price){  
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/order/');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+                updateCartItems(); 
+
+            // Send the data to the server
+                xhr.send('id=' + encodeURIComponent(category) + '&name=' + encodeURIComponent(name) + '&price=' + encodeURIComponent(price));
+                //var cart = document.getElementById("cartitems");
+                   // cart.innerHTML += `<div class="cart-item" id="${name}">${name} ------- ${price}</div>`;
+                 //   const div = document.querySelector('name');
+                }
+
+                function getCookie(name) {
+                    var value = "; " + document.cookie;
+                    var parts = value.split("; " + name + "=");
+                    if (parts.length == 2) return parts.pop().split(";").shift();
+                }
+
+
+                function deleteAll(){
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/delete-all/');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+                    // Send the request to the server
+                    xhr.send();
+                    updateCartItems();
+
+                }
+
+                function updateCartItems() {
+                    // Create an AJAX request
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', '/get-current/');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            // Parse the JSON response
+                            var current = JSON.parse(xhr.responseText);
+                
+                            // Update the cartitems div
+                            var cartitemsDiv = document.getElementById('cartitems');
+                            cartitemsDiv.innerHTML = '';
+                            for (var i = 0; i < current.length; i++) {
+                                var object = current[i];
+                                cartitemsDiv.innerHTML += '<div>' + object.items + '</div>';
+                                cartitemsDiv.innerHTML += '<div>' + object.price + '</div>';
+                            }
+                        }
+                    };
+                    xhr.send();
+                }
+
+                //document.getElementById(${name}).onclick = function() {this.form.submit;}  
+                </script>
             </div>
 
             <!-- Menu side -->
-            <div class="menu-side">
+
+            <button name="food" value="breakfast"></button>
+            <div class="menu-side" id="menulist">  
+               
                 <!-- Menu items will be placed here -->
             </div>
+           
         </div>
+
+        <script>
+    //document.getElementById("myButton").onclick = function() {
+       // document.getElementById("myDiv").style.display = "block";
+    //}
+</script>
 
         <!-- Right-side cart -->
         <div class="right-side">
             <h2>Cart</h2>
-            <div class="cart-items">
+            <div class="cart-items" id="cartitems">
+                <form>
+
+
+                </form>
                 <!-- Cart items will be dynamically added/removed here -->
             </div>
             <div class="cart-total">
                 <!-- Total amount and checkout button here -->
                 Total: ₱0.00
             </div>
-            <button class="clear-cart-btn">Clear Cart</button>
+            <button onclick="deleteAll()" class="clear-cart-btn">Clear Cart</button>
             <button class="checkout-btn">Checkout</button>
         </div>
     </div>
-    <script> var jsonData = {{breakfast|safe}} </script>
-    <script src="{% static 'js\order.js' %}"></script>
+    <script> //var jsonData = {{breakfast|safe}} </script>
+    //<script src="{% static 'js\order2.js' %}"></script>
 </body>
 </html>

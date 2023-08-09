@@ -21,12 +21,24 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.login,name="login"),
+    path('delete-all/', views.delete_all,name='delete-all'),
+    path('get-current/', views.get_current,name='get-current'),
     path('dashboard/',views.dashboard,name="dashboard"),
+    path('checkout/',views.checkout,name="checkout"),
+    path('history/',views.history,name="history"),
+    path('myview/<str:id>',views.order,name="myview"),
+    path('order/',views.order,name="order"),
+    path('inventory/', views.inventory, name="inventory"),
+    path('pricebook/',views.pricebook,name="pricebook"),
+    path('queue/',views.queue,name="queue"),
+    
+]
+
+'''path('dashboard/',views.dashboard,name="dashboard"),
     path('checkout/',views.checkout,name="checkout"),
     path('history/',views.history,name="history"),
     path('order/',views.order,name="order"),
     path('inventory/', views.inventory, name="inventory"),
     path('pricebook/',views.pricebook,name="pricebook"),
-    path('queue/',views.queue,name="queue"),
-]
+    path('queue/',views.queue,name="queue"),'''
 

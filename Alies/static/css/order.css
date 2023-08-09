@@ -101,18 +101,25 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    cursor:pointer;
+    
+    
 }
 
 /* Styling for the images in the menu items */
 .menu-item img {
+    
     max-width: 150px;
     max-height: 150px;
     margin-bottom: 10px;
+    cursor:pointer;
+
 }
 
 /* Styling for the name and price of the menu items */
 .menu-item-details {
     text-align: center;
+    cursor:pointer;
 }
 
 /* Styling for the right side, which includes the cart */

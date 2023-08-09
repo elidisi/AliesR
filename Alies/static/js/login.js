@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     // Add event listener to the login button
     document.getElementById("login-btn").addEventListener("click", function() {

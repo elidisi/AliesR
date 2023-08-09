@@ -1,6 +1,6 @@
 from django.db.models import Model
 from django.db import models
-from .utils import create_new_ref_number
+from .utils import *
 
 class Breakfast(Model):
     name = models.CharField(max_length=255)
@@ -13,7 +13,7 @@ class Noodle(Model):
     price = models.IntegerField()
     stock = models.IntegerField()
     imageURL = models.ImageField(upload_to="static/media/noodles")
-
+    
 class Sisig(Model):
     name = models.CharField(max_length=255)
     price = models.IntegerField()
@@ -37,6 +37,7 @@ class Pork(Model):
     price = models.IntegerField()
     stock = models.IntegerField()
     imageURL = models.ImageField(upload_to="static/media/pork")
+
 
 class Chicken(Model):
     name = models.CharField(max_length=255)
@@ -79,3 +80,14 @@ class Drink(Model):
     price = models.IntegerField()
     stock = models.IntegerField()
     imageURL = models.ImageField(upload_to="static/media/drinks")
+    
+class Receipt(Model):
+    name = models.CharField(max_length=255)
+    date = models.DateTimeField()
+    items = models.TextField()
+    ref_num = models.CharField(max_length=10, editable=False, unique=True, default=create_new_ref_number())
+    
+class CurrentTransaction(Model):
+        items = models.CharField(max_length=255)
+        itemcount = models.IntegerField()
+        price = models.IntegerField()

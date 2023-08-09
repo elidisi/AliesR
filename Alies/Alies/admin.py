@@ -14,5 +14,7 @@ admin.site.register(Vegetable)
 admin.site.register(Snack)
 admin.site.register(Addon)
 admin.site.register(Drink)
+admin.site.register(Receipt)
+admin.site.register(CurrentTransaction)
 
 
