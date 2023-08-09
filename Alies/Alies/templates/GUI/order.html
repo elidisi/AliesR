@@ -54,7 +54,7 @@
                 <script>
 
                     window.onload = function(){
-                        deleteAll();
+                        deleteAll(onAddToCart);
                         };
                     function showitem(id){
                         var name = [];
@@ -143,30 +143,42 @@
                                 //alters image not yet
                                 reference.innerHTML += `<div name="${name[i]}" class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
                             }else if(stock[i] < 3){
-                                reference.innerHTML += `<div name="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
+                                reference.innerHTML += `<div name="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]},onAddToCart)"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
                                 //alters image not yet
 
                             }else{
-                                reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">${price[i]}</label></div>`;
+                                reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]},onAddToCart())"><img class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">${price[i]}</label></div>`;
 
                             }
                         };
                         
                     }
 
-            function addToCart(category, name, price){  
+            function addToCart(category, name, price,callback){  
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '/order/');
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-                updateCartItems(); 
-
+                xhr.onload = function(){
+                    updateCartItems();
+                }
             // Send the data to the server
                 xhr.send('id=' + encodeURIComponent(category) + '&name=' + encodeURIComponent(name) + '&price=' + encodeURIComponent(price));
-                //var cart = document.getElementById("cartitems");
-                   // cart.innerHTML += `<div class="cart-item" id="${name}">${name} ------- ${price}</div>`;
-                 //   const div = document.querySelector('name');
+                xhr.addEventListener('load', function() {
+                    // Call the callback function
+                    if (callback) {
+                        callback();
+                    }
+                        });
                 }
+
+                function onAddToCart() {
+                    // Update the cart after the addToCart function has completed
+                    updateCartItems();
+                }
+                
+
+
 
                 function getCookie(name) {
                     var value = "; " + document.cookie;
@@ -175,14 +187,22 @@
                 }
 
 
-                function deleteAll(){
+                function deleteAll(callback){
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', '/delete-all/');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
                     // Send the request to the server
+                    xhr.onload = function(){
+                        updateCartItems();
+                    }
                     xhr.send();
-                    updateCartItems();
+                    xhr.addEventListener('load', function() {
+                        // Call the callback function
+                        if (callback) {
+                            callback();
+                        }
+                    });
 
                 }
 
@@ -208,7 +228,6 @@
                     xhr.send();
                 }
 
-                //document.getElementById(${name}).onclick = function() {this.form.submit;}  
                 </script>
             </div>
 
@@ -241,7 +260,7 @@
                 <!-- Total amount and checkout button here -->
                 Total: ₱0.00
             </div>
-            <button onclick="deleteAll()" class="clear-cart-btn">Clear Cart</button>
+            <button onclick="deleteAll(onAddToCart)" class="clear-cart-btn">Clear Cart</button>
             <a href="/checkout" class="checkout-btn"><center>Checkout</center></a>
         </div>
     </div>

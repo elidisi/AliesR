@@ -1,15 +1,14 @@
 from django.http import HttpResponse
 from django.template import loader
 from .models import *
-from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
 from django.http import JsonResponse
 from .utils import *
 from django.views.decorators.csrf import csrf_exempt
-from django.db.models import Count, F, Value
 from django.http import HttpResponse
 import datetime
 from .utils import create_new_ref_number
+from django.shortcuts import render, redirect
+
 
 
 
@@ -128,13 +127,29 @@ def get_receipt_details(request, receipt_id):
     # Return the receipt data as a JSON response
     return JsonResponse(receipt_data)
 
+
 def inventory(request):
     form = loader.get_template("GUI/inventory.html") 
     return HttpResponse(form.render({},request))
 
 def queue(request):
+    context = {
+        "receipts":Receipt.objects.filter(status='In Queue')
+    }
+   
     form = loader.get_template("GUI/queue.html") 
-    return HttpResponse(form.render({},request))
+    return HttpResponse(form.render(context,request))
+
+def update_receipt_status(request, receipt_id):
+    # Get the Receipt object with the given ID
+    receipt = Receipt.objects.get(ref_num=receipt_id)
+
+    # Update the status of the receipt to 'Done'
+    receipt.status = 'Done'
+    receipt.save()
+
+    # Redirect back to the order queue page
+    return redirect('queue')
 
 def history(request):
     context = {

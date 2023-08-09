@@ -24,70 +24,18 @@
 
     <!-- Queue Area -->
     <div class="queue-area">
-        <!-- Symmetrical boxes for queuing -->
-        <div class="queue-box">
-            <h3>Order #123</h3>
-            <p>Total: ₱250.00</p>
-            <p>Payment: Credit Card</p>
-        </div>
-        <!-- Repeat the queue-box structure for other orders -->
-        <div class="queue-box">
-            <h3>Order #124</h3>
-            <p>Total: ₱150.00</p>
-            <p>Payment: Cash</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #125</h3>
-            <p>Total: ₱180.00</p>
-            <p>Payment: PayPal</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #126</h3>
-            <p>Total: ₱210.00</p>
-            <p>Payment: Credit Card</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #127</h3>
-            <p>Total: ₱120.00</p>
-            <p>Payment: Cash</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #128</h3>
-            <p>Total: ₱300.00</p>
-            <p>Payment: PayPal</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #129</h3>
-            <p>Total: ₱180.00</p>
-            <p>Payment: Cash</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #130</h3>
-            <p>Total: ₱210.00</p>
-            <p>Payment: Credit Card</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #131</h3>
-            <p>Total: ₱120.00</p>
-            <p>Payment: Cash</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #132</h3>
-            <p>Total: ₱300.00</p>
-            <p>Payment: PayPal</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #133</h3>
-            <p>Total: ₱250.00</p>
-            <p>Payment: Credit Card</p>
-        </div>
-        <div class="queue-box">
-            <h3>Order #134</h3>
-            <p>Total: ₱150.00</p>
-            <p>Payment: Cash</p>
-        </div>
-    </div>
+        {% for receipt in receipts %}
 
-    <script src="{% static 'js\queue.js' %}"></script>
+        <li>
+            <div class="queue-box"><h3>Order {{ receipt.ref_num }}:</h3> <pre style="overflow:visible">{{ receipt.items }}</pre><form action="{% url 'update_receipt_status' receipt.ref_num %}" method="post">
+                {% csrf_token %}
+                <input  type="submit" value="Done" class="done-button">
+            </form></div>
+            
+        </li>
+    {% endfor %}
+    </div>
+    <link rel="stylesheet" href="{% static 'css\queue.css' %}">
+
 </body>
 </html>

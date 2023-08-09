@@ -47,6 +47,20 @@ body {
     order: 3;
 }
 
+.donebtn {
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+    transform: scaleX(-1); /* Flip the button horizontally */
+    /* Adjust the order property to move it to the right */
+    order: 3;
+}
+
+
 /* Styling for the queue area */
 .queue-area {
     display: flex;
@@ -80,4 +94,18 @@ body {
 .queue-box p {
     margin: 5px 0;
     font-size: 14px;
+}
+
+/*Style for done button*/
+.done-button {
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+    transform: scaleX(-1); /* Flip the button horizontally */
+    /* Adjust the order property to move it to the right */
+    order: 3;
 }

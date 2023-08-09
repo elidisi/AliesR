@@ -1,6 +1,8 @@
 from django.db.models import Model
 from django.db import models
 from .utils import *
+from django.http import HttpResponse
+import datetime
 
 class Breakfast(Model):
     name = models.CharField(max_length=255)
@@ -82,10 +84,11 @@ class Drink(Model):
     imageURL = models.ImageField(upload_to="static/media/drinks")
     
 class Receipt(Model):
-    name = models.CharField(max_length=255)
-    date = models.DateTimeField()
-    items = models.TextField()
-    ref_num = models.CharField(max_length=10,editable=True, unique=True)
+    name = models.CharField(max_length=255, default="customer")
+    date = models.DateTimeField(default=datetime.datetime.now())
+    items = models.TextField(default=" ")
+    ref_num = models.CharField(max_length=10,editable=True, unique=True,default=create_new_ref_number())
+    status = models.CharField(max_length=20,default="In Queue")
     
 class CurrentTransaction(Model):
         items = models.CharField(max_length=255)
