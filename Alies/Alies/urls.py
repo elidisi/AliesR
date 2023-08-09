@@ -23,6 +23,8 @@ urlpatterns = [
     path('',views.login,name="login"),
     path('delete-all/', views.delete_all,name='delete-all'),
     path('get-current/', views.get_current,name='get-current'),
+    path('checkout/', views.checkout,name='checkout'),
+    path('get-receipt-details/<str:receipt_id>/', views.get_receipt_details,name='get_receipt_details'),
     path('dashboard/',views.dashboard,name="dashboard"),
     path('checkout/',views.checkout,name="checkout"),
     path('history/',views.history,name="history"),
@@ -33,12 +35,4 @@ urlpatterns = [
     path('queue/',views.queue,name="queue"),
     
 ]
-
-'''path('dashboard/',views.dashboard,name="dashboard"),
-    path('checkout/',views.checkout,name="checkout"),
-    path('history/',views.history,name="history"),
-    path('order/',views.order,name="order"),
-    path('inventory/', views.inventory, name="inventory"),
-    path('pricebook/',views.pricebook,name="pricebook"),
-    path('queue/',views.queue,name="queue"),'''
 

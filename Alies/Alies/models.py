@@ -85,7 +85,7 @@ class Receipt(Model):
     name = models.CharField(max_length=255)
     date = models.DateTimeField()
     items = models.TextField()
-    ref_num = models.CharField(max_length=10, editable=False, unique=True, default=create_new_ref_number())
+    ref_num = models.CharField(max_length=10,editable=True, unique=True)
     
 class CurrentTransaction(Model):
         items = models.CharField(max_length=255)

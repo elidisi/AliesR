@@ -1,4 +1,4 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,33 +18,63 @@
             <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
         </div>
         <div class="menu-right">
-            <a href="{% static 'media\dashboard.html' %}" class="rtnbtn">Return</a>
+            <a href="/dashboard" class="rtnbtn">Return</a>
         </div>
     </div>
 
-    <!-- Main content -->
-    <div class="container">
+
         <!-- Sidebar -->
         <div class="sidebar">
+            <select class="transaction-tab" id="receipt-select" onchange="updateReceiptDetails()">
+                <option value="">--Please choose an option--</option>
+                {% for receipt in receipts %}
+                    <option value="{{ receipt.ref_num}}">{{ receipt.date }}</option>
+                {% endfor %}
+            </select>
+            
             <!-- Rectangular tabs for different transaction orders -->
-            <div class="transaction-tab">Order #123</div>
-            <div class="transaction-tab">Order #124</div>
-            <div class="transaction-tab">Order #125</div>
             <!-- Add more transaction tabs as needed -->
         </div>
 
         <!-- Order details -->
         <div class="main-content">
             <!-- Order details will be displayed here -->
-            <div class="order-details">
-                <h2>Order #123</h2>
+            <div id= "order-details" class="order-details">
+                <!--<h2>Order #123</h2>
                 <p>Total: ₱250.00</p>
-                <p>Payment: Credit Card</p>
+                <p>Payment: Credit Card</p>-->
                 <!-- Display more order details here -->
             </div>
         </div>
     </div>
 
-    <script src="{% static 'js\history.js' %}"></script>
+    <script>
+        function updateReceiptDetails() {
+            var selectElement = document.getElementById('receipt-select');
+            var receiptId = selectElement.value;
+            if (receiptId) {
+                // Create an AJAX request
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/get-receipt-details/' + receiptId + '/');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // Parse the JSON response
+                        var receipt = JSON.parse(xhr.responseText);
+    
+                        // Update the receipt details div
+                        var receiptDetailsDiv = document.getElementById('order-details');
+                        receiptDetailsDiv.innerHTML = '<h2>Order #'+receipt.ref_num+'</h2><div><pre style="overflow:visible">' + receipt.items + '</pre></div>';
+                    }
+                };
+                xhr.send();
+            } else {
+                // Clear the receipt details div
+                var receiptDetailsDiv = document.getElementById('receipt-details');
+                receiptDetailsDiv.innerHTML = '';
+            }
+        }
+    </script>
+
+    <script src="{%static 'js/history.js'%}"></script>
 </body>
 </html>

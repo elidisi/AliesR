@@ -1,41 +1,123 @@
-/* Add your CSS styles for the checkout page here */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #D6D3CE;
-}
-
-h1 {
+    background-color: #FAF0CA;
+  }
+  
+  .header {
+    background-color: #875D0F;
+    padding: 20px;
     text-align: center;
-    margin: 20px;
-}
-
-.cart-items {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 2px solid #875D0F;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header .logo-left,
+  .header .logo-center {
+    display: flex;
+    align-items: center;
+    height: 100px;
+  }
+  
+  .logo-left img,
+  .logo-center img {
+    height: 100px;
+  }
+  
+  .container {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .order-details-box {
+    flex: 2;
+    height: 700px;
     background-color: #EEC06A;
-    border-radius: 5px;
-}
-
-.cart-item {
+    padding: 20px;
+    font-size: 18px;
+    margin-right: 20px;
+  }
+  
+  .order-details-box h2 {
+    margin-bottom: 10px;
+  }
+  
+  .order-details {
+    background-color: #ffffff;
+    padding: 10px;
+  }
+  
+  .item-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 5px 0;
-    border-bottom: 1px solid #ddd;
-    margin: 5px;
-}
-
-.cart-item-remove {
-    color: red;
+  }
+  
+  .discount-and-payment {
+    flex: 1;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .discount h2,
+  .payment h2 {
+    margin-bottom: 10px;
+  }
+  
+  .discount-buttons,
+  .payment-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  
+  .discount-button,
+  .payment-button {
+    flex: 1;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 30px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
-}
-
-.total {
-    text-align: right;
+  }
+  
+  .proceed-button {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
     margin-top: 20px;
-    font-weight: bold;
-}
+  }
+  
+  .back-button {
+    background-color: #EEC06A;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #DDB052;
+  }
+  

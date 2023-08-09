@@ -1,19 +1,115 @@
+{% load static %}   
+<!DOCTYPE html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="checkout.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    window.onload = function(){
+        updateCartItems();
+        
+        };
+    
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        }
+
+
+        function goBack() {
+            window.history.back();
+          };
+        
+          function addToreceipts(compiled){  
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/checkout/');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+        //send data to server
+        xhr.send('text=' + encodeURIComponent(compiled));
+
+          };
+        
+          function updateCartItems() {
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/get-current/');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Parse the JSON response
+                    var current = JSON.parse(xhr.responseText);
+        
+                    // Update the cartitems div
+                    var cartitemsDiv = document.getElementById('item-list');
+                    var total = 0;
+                    cartitemsDiv.innerHTML = '';
+                    for (var i = 0; i < current.length; i++) {
+                        var object = current[i];
+                        cartitemsDiv.innerHTML += '<div class="item-window"><div class="item">' + object.items + " -- ₱"+ object.price +'</div></div>';
+                        total = total +object.price
+                    }
+                    cartitemsDiv.innerHTML += '<label class="item"> TOTAL:₱'+ total +'</label>';
+                }
+            };
+            xhr.send();
+        };
+          
+        function proceed(text){
+            alert("Order has been saved");
+            window.location.href='/dashboard';
+            addToreceipts(text);
+
+        };
+
+
+
+  </script>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="{% static 'css\checkout.css' %}">
 </head>
 <body>
-    <h1>Checkout</h1>
-    <div class="cart-items">
+  <div class="header">
+    <div class="logo-left">
+      <img src="{% static 'media\logo.png' %}" alt="Left Logo">
+    </div>
+    <div class="logo-center">
+      <img src="{% static 'media\mlogo.png' %}" alt="Center Logo">
+    </div>
+    <button class="back-button" onclick="goBack()">Return</button>
+  </div>
+  <div class="container">
+    <div class="order-details-box">
+      <h2>Order Details</h2>
+      <div class="order-details">
+        <div id="item-list" class="item-list">
+          <div id="item-window"class="item">
         <!-- Cart items will be displayed here -->
+          </div>
+          <!-- Add more items here -->
+        </div>
+      </div>
     </div>
-    <div class="total">
-        <!-- Total amount will be displayed here -->
+    <div class="discount-and-payment">
+      <div class="discount">
+        <h2>Discount</h2>
+        <div class="discount-buttons">
+          <button class="discount-button" id="senior-discount">Senior Citizen</button>
+          <button class="discount-button" id="disabled-discount">Disabled</button>
+        </div>
+      </div>
+      <div class="payment">
+        <h2>Mode of Payment</h2>
+        <div class="payment-buttons">
+          <button class="payment-button" id="gcash">GCash</button>
+          <button class="payment-button" id="cash">Cash</button>
+        </div>
+      </div>
+      <button onclick="proceed('hello')" class="proceed-button">Proceed</button>
     </div>
-    <script src="checkout.js"></script>
+  </div>
+
 </body>
 </html>

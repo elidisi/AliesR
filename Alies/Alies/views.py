@@ -7,6 +7,9 @@ from django.http import JsonResponse
 from .utils import *
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Count, F, Value
+from django.http import HttpResponse
+import datetime
+from .utils import create_new_ref_number
 
 
 
@@ -90,8 +93,40 @@ def get_current(request):
     return JsonResponse(current_list, safe=False)
 
 def checkout(request):
+    
+    if request.method == 'POST':
+        # Retrieve the data from the POST request
+        id = request.POST.get('compiled')
+        receipt_text = ''
+        total = 0
+        for item in CurrentTransaction.objects.all():
+            receipt_text += f'{item.items} - {item.price}\n'
+            total = total + item.price
+        receipt_text += f'total = {total}'
+
+        # Update your model or perform other actions here
+        current = Receipt(items=receipt_text)
+        current.date = datetime.datetime.now()
+        current.ref_num = create_new_ref_number()
+        current.save()
+
+        JsonResponse({'status': 'success'})
     form = loader.get_template("GUI/checkout.html") 
     return HttpResponse(form.render({},request))
+
+def get_receipt_details(request, receipt_id):
+    # Get the Receipt object with the given ID
+    receipt = Receipt.objects.get(ref_num=receipt_id)
+
+    # Convert the Receipt object to a dictionary
+    receipt_data = {
+        'ref_num': receipt.ref_num,
+        'date': receipt.date,
+        'items': receipt.items,
+    }
+
+    # Return the receipt data as a JSON response
+    return JsonResponse(receipt_data)
 
 def inventory(request):
     form = loader.get_template("GUI/inventory.html") 
@@ -102,8 +137,13 @@ def queue(request):
     return HttpResponse(form.render({},request))
 
 def history(request):
+    context = {
+    "receipts":Receipt.objects.all(),
+   
+    }
+    
     form = loader.get_template("GUI/history.html") 
-    return HttpResponse(form.render({},request))
+    return HttpResponse(form.render(context,request))
 
 def pricebook(request):
     form = loader.get_template("GUI/pricebook.html") 

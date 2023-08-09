@@ -52,6 +52,10 @@
                 <div class="category search-category">Search</div>
 
                 <script>
+
+                    window.onload = function(){
+                        deleteAll();
+                        };
                     function showitem(id){
                         var name = [];
                         var imageurl = [];
@@ -210,7 +214,6 @@
 
             <!-- Menu side -->
 
-            <button name="food" value="breakfast"></button>
             <div class="menu-side" id="menulist">  
                
                 <!-- Menu items will be placed here -->
@@ -239,7 +242,7 @@
                 Total: ₱0.00
             </div>
             <button onclick="deleteAll()" class="clear-cart-btn">Clear Cart</button>
-            <button class="checkout-btn">Checkout</button>
+            <a href="/checkout" class="checkout-btn"><center>Checkout</center></a>
         </div>
     </div>
     <script> //var jsonData = {{breakfast|safe}} </script>
