@@ -90,6 +90,7 @@ def get_current(request):
             'items': obj.items,
             'price': obj.price,
         })
+        
 
     # Return the current value as a JSON response
     return JsonResponse(current_list, safe=False)

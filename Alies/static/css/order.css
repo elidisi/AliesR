@@ -106,6 +106,17 @@ body {
     
 }
 
+.menu-item-outofstock img {
+    max-width: 150px;
+    max-height: 150px;
+    margin-bottom: 10px;
+    cursor:pointer;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    
+    
+}
+
 /* Styling for the images in the menu items */
 .menu-item img {
     

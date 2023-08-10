@@ -1,5 +1,3 @@
-cd C:\Users\natha\Documents\Alies GIT\AliesR-1\Alies
-
 @echo off
 
 rem This file is UTF-8 encoded, so we need to update the current code page while executing it
