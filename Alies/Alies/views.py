@@ -34,6 +34,7 @@ def order(request):
         "noodles":Noodle.objects.all(),
         "yangchow":Yangchow.objects.all(),
         "wings":Wing.objects.all(),
+        "sisig":Sisig.objects.all(),
         "pork":Pork.objects.all(),
         "chicken":Chicken.objects.all(),
         "beef":Beef.objects.all(),

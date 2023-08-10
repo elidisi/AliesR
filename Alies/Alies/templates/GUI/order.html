@@ -37,24 +37,23 @@
                 <div class="category" onclick="showitem(this.dataset.category);" data-category="wings">Wings</div>
 
                 <!-- Additional categories -->
-                <div class="category" data-category="pork">Pork</div>
-                <div class="category" data-category="chicken">Chicken</div>
-                <div class="category" data-category="beef">Beef</div>
-                <div class="category" data-category="seafood">Seafood</div>
-                <div class="category" data-category="vegetable">Vegetable</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="pork">Pork</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="chicken">Chicken</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="beef">Beef</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="seafood">Seafood</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="vegetable">Vegetable</div>
 
                 <!-- New categories -->
-                <div class="category" data-category="snacks">Snacks</div>
-                <div class="category" data-category="addon">Add Ons</div>
-                <div class="category" data-category="drinks">Drinks</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="snacks">Snacks</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="addons">Add Ons</div>
+                <div class="category" onclick="showitem(this.dataset.category);"data-category="drinks">Drinks</div>
 
                 <!-- Search category -->
-                <div class="category search-category">Search</div>
 
                 <script>
 
                     window.onload = function(){
-                        deleteAll(onAddToCart);
+                        updateCartItems()
                         };
                     function showitem(id){
                         var name = [];
@@ -123,10 +122,222 @@
                                 {% endfor %}]
 
                                 var stock = [
-                                {%for item in breakfast%}
+                                {%for item in yangchow%}
                                 '{{item.stock}}',
                                 {% endfor %}];
                                 break;
+                        case 'sisig':
+                            var name = [
+                                {%for item in sisig%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in sisig%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in sisig%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in sisig%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                    case 'wings':
+                            var name = [
+                                {%for item in wings%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in wings%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in wings%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in wings%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                         case 'pork':
+                            var name = [
+                                {%for item in pork%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in pork%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in pork%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in pork%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                        case 'chicken':
+                            var name = [
+                                {%for item in chicken%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in chicken%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in chicken%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in chicken%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                        case 'beef':
+                            var name = [
+                                {%for item in beef%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in beef%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in beef%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in beef%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                    case 'seafood':
+                            var name = [
+                                {%for item in seafood%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in seafood%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in seafood%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in seafood%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                        case 'vegatable':
+                            var name = [
+                                {%for item in vegatable%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in vegatable%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in vegatable%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in vegatable%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                        case 'addons':
+                            var name = [
+                                {%for item in addons%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in addons%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in addons%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in addons%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                         case 'drinks':
+                            var name = [
+                                {%for item in drinks%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in drinks%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in drinks%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in drinks%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                         case 'snacks':
+                            var name = [
+                                {%for item in snacks%}
+                                '{{item.name}}',
+                                {% endfor %}];
+
+                                var imageurl = [
+                                {%for item in snacks%}
+                                '{{item.imageURL}}',
+                                {% endfor %}];
+                                
+                                var price = [
+                                {%for item in snacks%}
+                                '{{item.price}}',
+                                {% endfor %}]
+
+                                var stock = [
+                                {%for item in snacks%}
+                                '{{item.stock}}',
+                                {% endfor %}];
+                                break;
+                                
+                                
             
                             default:
                             alert("There has been an error. Try again");
