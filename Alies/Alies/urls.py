@@ -20,13 +20,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.login,name="login"),
     path('delete-all/', views.delete_all,name='delete-all'),
     path('get-current/', views.get_current,name='get-current'),
     path('checkout/', views.checkout,name='checkout'),
     path('remove_from_cart/', views.remove_from_cart,name='remove_from_cart'),
     path('update-receipt-status/<str:receipt_id>/', views.update_receipt_status, name='update_receipt_status'),
     path('get-receipt-details/<str:receipt_id>/', views.get_receipt_details,name='get_receipt_details'),
+    path('',views.dashboard,name="dashboard"),
     path('dashboard/',views.dashboard,name="dashboard"),
     path('checkout/',views.checkout,name="checkout"),
     path('history/',views.history,name="history"),

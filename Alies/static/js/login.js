@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
       // Validate login credentials (Replace "your-correct-username" and "your-correct-password" with actual values)
       if (username === "admin" && password === "admin") {
         alert("Login successful!");
+        var loginPage = document.getElementById("login");
+        loginPage.style.display = "none";
         // Redirect to a different page after successful login
-        window.location.href = "/dashboard"; // Replace "dashboard.html" with the page you want to redirect to
       } else {
         alert("Invalid credentials. Please try again.");
       }
@@ -32,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (username === "admin" && password === "admin") {
       alert("Login successful!");
       // Redirect to a different page after successful login
-      window.location.href = "/dashboard"; // Replace "dashboard.html" with the page you want to redirect to
+      var loginPage = document.getElementById("login");
+      loginPage.style.display = "none";
     } else {
       alert("Invalid credentials. Please try again.");
     }

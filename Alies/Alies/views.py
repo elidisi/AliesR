@@ -10,12 +10,6 @@ from .utils import create_new_ref_number
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 
-
-
-
-
-
-
 def dashboard(request):
     context = {
         'breakfast': Breakfast.objects.all()
@@ -60,7 +54,11 @@ def order(request):
         current.price = price
         current.itemcount = 1
         current.save()
-
+        
+        items = [context.keys]
+        for item in items:
+            print(item)
+            
         JsonResponse({'status': 'success'})
 
         
