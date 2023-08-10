@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordering Page</title>
-    <link rel="stylesheet" href="{% static 'css\order.css' %}">
+    <link rel="stylesheet" href="{% static 'css\order.css' %}?version=1">
 </head>
 <body>
     <!-- Menubar -->
@@ -350,17 +350,8 @@
 
                     //adds items to order based on category using for loop
                         for(let i = 0; i < name.length; i++){
-                            if (stock[i] == 0){
-                                //alters image not yet
-                                reference.innerHTML += `<div name="${name[i]}" class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]})"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
-                            }else if(stock[i] < 3){
-                                reference.innerHTML += `<div name="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]},onAddToCart)"><img style="" class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label class="menu-item-details">${price[i]}</label></div>`;
-                                //alters image not yet
+                                reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]},onAddToCart())"><img class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">PHP${price[i]}</label></div>`;
 
-                            }else{
-                                reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="addToCart('${id}','${name[i]}', ${price[i]},onAddToCart())"><img class="menu-item img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">${price[i]}</label></div>`;
-
-                            }
                         };
                         
                     }
