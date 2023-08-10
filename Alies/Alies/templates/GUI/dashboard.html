@@ -1,14 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+  {% block head %}
   <head>
     <title>Dashboard</title>
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css\styles.css' %} "
+      href="{% static 'css\styles.css' %}?=version1 "
     />
   </head>
+  {% endblock %}
   <body>
     <div id="login">
       <div class="login-container">
@@ -39,8 +41,21 @@
       <script src="{% static 'js\login.js' %}"></script>
       <!-- Link the JavaScript file -->
     </div>
+
+    {% block content %}
     <header>
-      <img src="{% static 'media\mlogo.png' %}" height="100px" />
+      <div class="menubar">
+        <!-- Add your menu bar content here -->
+        <div class="menu-left">
+        </div>
+        <div class="menu-center">
+          <img src="{% static 'media\mlogo.png' %}" alt="Center Image" />
+        </div>
+        <div class="menu-right">
+          <button onclick="logout()" class="rtnbtn">LOGOUT</a>
+        </div>
+      </div>
+      
     </header>
     <div class="dashboard">
       <div class="top-row">
@@ -56,6 +71,11 @@
       <script>
         window.onload = function () {
           deleteAll();
+          var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  if (isLoggedIn === "true") {
+    var loginPage = document.getElementById("login");
+    loginPage.style.display = "none";
+  }
         };
 
         function deleteAll() {
@@ -77,5 +97,6 @@
       }
       </script>
     </div>
+    {% endblock %}
   </body>
 </html>

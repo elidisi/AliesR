@@ -1,3 +1,18 @@
+window.onload = function () {
+  var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  if (isLoggedIn === "true") {
+    var loginPage = document.getElementById("login");
+    loginPage.style.display = "none";
+  }
+};
+
+function logout() {
+  // Clear the sessionStorage flag
+  sessionStorage.removeItem("isLoggedIn");
+
+  // Redirect to the login page
+  window.location.reload();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Add event listener to the login button
@@ -9,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // Validate login credentials (Replace "your-correct-username" and "your-correct-password" with actual values)
       if (username === "admin" && password === "admin") {
         alert("Login successful!");
+        sessionStorage.setItem("isLoggedIn", "true");
         var loginPage = document.getElementById("login");
         loginPage.style.display = "none";
         // Redirect to a different page after successful login

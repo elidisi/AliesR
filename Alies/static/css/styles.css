@@ -59,8 +59,18 @@ body {
     align-items: center; /* Center text vertically */
     justify-content: center; /* Center text horizontally */
     flex: 1; /* Take up all available space */
-    bu
+
   }
+
+  /* Styling for the menu bar at the top */
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #875D0F;
+  color: #fff;
+  padding: 10px;
+}
   
   /* Change the button color on hover */
   .btn:hover {
@@ -71,6 +81,36 @@ body {
   .bottom-row .btn {
     margin-right: 10px;
   }
+
+  .menu-left img {
+    max-height: 100px;
+}
+
+/* Styling for the center image in the menu bar */
+.menu-center img {
+    max-height: 100px;
+}
+
+/* Styling for the return button in the menu bar */
+.rtnbtn{
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+} 
+
+  .rtnbtn{
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+} 
   
   #login{
     height: 100vw;

@@ -1,13 +1,21 @@
-{% load static %}
+{% extends 'GUI/dashboard.html' %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  {% block head %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ordering Page</title>
     <link rel="stylesheet" href="{% static 'css\order.css' %}?version=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css\styles.css' %} "
+    />
   </head>
+  {% endblock %}
   <body>
+    {% block content %}
     <!-- Menubar -->
     <div class="menubar">
       <!-- Add your menu bar content here -->
@@ -131,7 +139,7 @@
 
                     window.onload = function(){
                         updateCartItems()
-
+                        showitem("breakfast");
                         };
                     function showitem(id){
                         var name = [];
@@ -579,5 +587,6 @@
       </div>
     </div>
     <script src="{% static 'js\order2.js' %}?version=1"></script>
+    {% endblock %}
   </body>
 </html>
