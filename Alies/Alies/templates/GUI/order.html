@@ -1,60 +1,141 @@
-{% load static %}   
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ordering Page</title>
-    <link rel="stylesheet" href="{% static 'css\order.css' %}?version=1">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css\order.css' %}?version=1" />
+  </head>
+  <body>
     <!-- Menubar -->
     <div class="menubar">
-        <!-- Add your menu bar content here -->
-        <div class="menu-left">
-            <img src="{% static 'media\logo.png' %}" alt="Left Image">
-        </div>
-        <div class="menu-center">
-            <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
-        </div>
-        <div class="menu-right">
+      <!-- Add your menu bar content here -->
+      <div class="menu-left">
+        <img src="{% static 'media\logo.png' %}" alt="Left Image" />
+      </div>
+      <div class="menu-center">
+        <img src="{% static 'media\mlogo.png' %}" alt="Center Image" />
+      </div>
+      <div class="menu-right">
         <a href="/dashboard" class="rtnbtn">Return</a>
-        </div>
+      </div>
     </div>
-
 
     <!-- Main content -->
     <div class="container">
-        <!-- Left-side menu and categories -->
-        <div class="left-side">
-            <!-- Categories -->
-            <div class="categories">
-                <!-- Original categories -->
-                <div class="category" onclick="showitem(this.dataset.category);" data-category="breakfast" >Breakfast</div>
-                <div class="category" onclick="showitem(this.dataset.category);" data-category="noodles">Noodles</div>
-                <div class="category" onclick="showitem(this.dataset.category);" data-category="sisig">Sisig</div>
-                <div class="category" onclick="showitem(this.dataset.category);" data-category="yangchow">Yangchow</div>
-                <div class="category" onclick="showitem(this.dataset.category);" data-category="wings">Wings</div>
+      <!-- Left-side menu and categories -->
+      <div class="left-side">
+        <!-- Categories -->
+        <div class="categories">
+          <!-- Original categories -->
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="breakfast"
+          >
+            Breakfast
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="noodles"
+          >
+            Noodles
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="sisig"
+          >
+            Sisig
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="yangchow"
+          >
+            Yangchow
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="wings"
+          >
+            Wings
+          </div>
 
-                <!-- Additional categories -->
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="pork">Pork</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="chicken">Chicken</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="beef">Beef</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="seafood">Seafood</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="vegetable">Vegetable</div>
+          <!-- Additional categories -->
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="pork"
+          >
+            Pork
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="chicken"
+          >
+            Chicken
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="beef"
+          >
+            Beef
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="seafood"
+          >
+            Seafood
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="vegetable"
+          >
+            Vegetable
+          </div>
 
-                <!-- New categories -->
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="snacks">Snacks</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="addons">Add Ons</div>
-                <div class="category" onclick="showitem(this.dataset.category);"data-category="drinks">Drinks</div>
+          <!-- New categories -->
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="snacks"
+          >
+            Snacks
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="addons"
+          >
+            Add Ons
+          </div>
+          <div
+            class="category"
+            onclick="showitem(this.dataset.category);"
+            data-category="drinks"
+          >
+            Drinks
+          </div>
 
-                <!-- Search category -->
+          <!-- Search category -->
 
-                <script>
+          <script>
 
                     window.onload = function(){
                         updateCartItems()
+<<<<<<< HEAD
                         showitem('breakfast');
+=======
+                        
+>>>>>>> b97527c7a815b295942614e5d35b6c55127eb624
                         };
 
                     function showitem(id){
@@ -75,7 +156,7 @@
                                 {%for item in breakfast%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in breakfast%}
                                 '{{item.price}}',
@@ -96,7 +177,7 @@
                                 {%for item in noodles%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in noodles%}
                                 '{{item.price}}',
@@ -117,7 +198,7 @@
                                 {%for item in yangchow%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in yangchow%}
                                 '{{item.price}}',
@@ -138,7 +219,7 @@
                                 {%for item in sisig%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in sisig%}
                                 '{{item.price}}',
@@ -159,7 +240,7 @@
                                 {%for item in wings%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in wings%}
                                 '{{item.price}}',
@@ -180,7 +261,7 @@
                                 {%for item in pork%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in pork%}
                                 '{{item.price}}',
@@ -201,7 +282,7 @@
                                 {%for item in chicken%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in chicken%}
                                 '{{item.price}}',
@@ -222,7 +303,7 @@
                                 {%for item in beef%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in beef%}
                                 '{{item.price}}',
@@ -243,7 +324,7 @@
                                 {%for item in seafood%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in seafood%}
                                 '{{item.price}}',
@@ -264,7 +345,7 @@
                                 {%for item in vegatable%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in vegatable%}
                                 '{{item.price}}',
@@ -285,7 +366,7 @@
                                 {%for item in addons%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in addons%}
                                 '{{item.price}}',
@@ -306,7 +387,7 @@
                                 {%for item in drinks%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in drinks%}
                                 '{{item.price}}',
@@ -327,7 +408,7 @@
                                 {%for item in snacks%}
                                 '{{item.imageURL}}',
                                 {% endfor %}];
-                                
+
                                 var price = [
                                 {%for item in snacks%}
                                 '{{item.price}}',
@@ -338,22 +419,22 @@
                                 '{{item.stock}}',
                                 {% endfor %}];
                                 break;
-                                
-                                
-            
+
+
+
                             default:
                             alert("There has been an error. Try again");
                         }
-                    
-                        
-                    
+
+
+
                     var reference = document.getElementById('menulist');
                     reference.innerHTML = "";
 
                     //adds items to order based on category using for loop
                         for(let i = 0; i < name.length; i++){
                             if(stock[i] == 0){
-                
+
                                 reference.innerHTML += `<div value="${name[i]}" name="food" id="${name[i]}"  class="menu-item" style="cursor:pointer;" onclick="alert('OUT OF STOCK!');"><img style="filter: grayscale(100%);opacity: 0.5;" class="menu-item-outofstock img" src={{"../${imageurl[i]}"}}><label class="menu-item-details">${name[i]}</label><label name="price" value="${price[i]}" class="menu-item-details">PHP${price[i]}</label></div>`;
 
                             }else{
@@ -362,10 +443,10 @@
                             }
 
                         };
-                        
+
                     }
 
-            function addToCart(category, name, price,callback){  
+            function addToCart(category, name, price,callback){
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '/order/');
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -387,7 +468,7 @@
                     // Update the cart after the addToCart function has completed
                     updateCartItems();
                 }
-                
+
 
                 {% comment %} function void() {
                     var vpassword = document.getElementById("password").value;
@@ -436,7 +517,7 @@
                         if (xhr.status === 200) {
                             // Parse the JSON response
                             var current = JSON.parse(xhr.responseText);
-                
+
                             // Update the cartitems div
                             var cartitemsDiv = document.getElementById('cartitems');
                             cartitemsDiv.innerHTML = '';
@@ -466,7 +547,7 @@
                                 form.appendChild(removeButton);
                                 itemDiv.appendChild(form);
                                 cartitemsDiv.appendChild(itemDiv);
-                                
+
                             }
                         var totalamount = document.getElementById('cart-total');
                                 totalamount.innerHTML = 'Total: PHP'+total
@@ -486,6 +567,7 @@
                     };
                     xhr.send('item_id=' + encodeURIComponent(itemId));
                 }
+<<<<<<< HEAD
 
                 </script>
             </div>
@@ -498,26 +580,36 @@
                 <!-- Menu items will be placed here -->
             </div>
            
+=======
+          </script>
+>>>>>>> b97527c7a815b295942614e5d35b6c55127eb624
         </div>
 
-        <script>
-</script>
+        <!-- Menu side -->
 
-        <!-- Right-side cart -->
-        <div class="right-side">
-            <h2>Cart</h2>
-            <div class="cart-items" id="cartitems">
-               
-                <!-- Cart items will be dynamically added/removed here -->
-            </div>
-            <div id="cart-total" class="cart-total">
-                <!-- Total amount and checkout button here -->
-                Total: ₱0.00
-            </div>
-            <button onclick="deleteAll(onAddToCart)" class="clear-cart-btn">Clear Cart</button>
-            <a href="/checkout" class="checkout-btn"><center>Checkout</center></a>
+        <div class="menu-side" id="menulist">
+          <!-- Menu items will be placed here -->
         </div>
+      </div>
+
+      <!-- Right-side cart -->
+      <div class="right-side">
+        <h2>Cart</h2>
+        <div class="cart-items" id="cartitems">
+          <!-- Cart items will be dynamically added/removed here -->
+        </div>
+        <div id="cart-total" class="cart-total">
+          <!-- Total amount and checkout button here -->
+          Total: ₱0.00
+        </div>
+        <button onclick="deleteAll(onAddToCart)" class="clear-cart-btn">
+          Clear Cart
+        </button>
+        <a href="/checkout" class="checkout-btn">
+          <center>Checkout</center>
+        </a>
+      </div>
     </div>
     <script src="{% static 'js\order2.js' %}?version=1"></script>
-</body>
+  </body>
 </html>

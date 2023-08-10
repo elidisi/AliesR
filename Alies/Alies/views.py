@@ -9,11 +9,7 @@ import datetime
 from .utils import create_new_ref_number
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
-
-
-
-
-
+from django.db.models import F
 
 
 def dashboard(request):
@@ -58,17 +54,18 @@ def order(request):
         current = CurrentTransaction()
         current.items = name
         current.price = price
+        current.category = id
         current.itemcount = 1
         current.save()
-
+            
         JsonResponse({'status': 'success'})
 
         
     form = loader.get_template("GUI/order.html") 
     return HttpResponse(form.render(context,request))
 
-@csrf_exempt
 def delete_all(request):
+    print("hi")
     if request.method == 'POST':
         # Delete all objects of MyModel
         CurrentTransaction.objects.all().delete()
@@ -91,9 +88,29 @@ def get_current(request):
             'price': obj.price,
         })
         
-
     # Return the current value as a JSON response
     return JsonResponse(current_list, safe=False)
+
+@require_POST
+def stocks_update(request):
+     # Get the current value of the current variable
+    current = CurrentTransaction.objects.all()  # Replace this with your code to get the current value
+    # Convert the current value to a list of dictionaries
+
+    for obj in current:
+        match obj.category:
+            case 'breakfast':
+                items = Breakfast.objects.filter(name=obj.items)
+                for item in items:
+                    print(obj.items)
+                    print(item)
+                    item.stock = F('stock') - 1
+                    item.save()
+            case _:
+                return redirect('dashboard')
+                
+    # Return the current value as a JSON response
+    return redirect('dashboard')
 
 def checkout(request):
     

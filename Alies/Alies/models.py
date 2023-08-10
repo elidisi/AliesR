@@ -94,3 +94,4 @@ class CurrentTransaction(Model):
         items = models.CharField(max_length=255)
         itemcount = models.IntegerField()
         price = models.IntegerField()
+        category = models.CharField(max_length=255, default='none')
