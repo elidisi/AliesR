@@ -57,14 +57,30 @@
             xhr.send();
         };
           
-        function proceed(text){
+        function proceed(text){          
             alert("Order has been saved");
-            deleteAll();
-            window.location.href='/dashboard';
+            //window.location.href='/dashboard';
             addToreceipts(text);
+            updateStocks();
 
         };
 
+
+        function updateStocks(callback){
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/stocks_update/');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+            // Send the request to the server
+            xhr.send();
+            xhr.addEventListener('load', function() {
+                // Call the callback function
+                if (callback) {
+                    callback();
+                }
+            });
+
+        }
 
         function deleteAll(callback){
             var xhr = new XMLHttpRequest();

@@ -9,6 +9,8 @@ import datetime
 from .utils import create_new_ref_number
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
+from django.db.models import F
+
 
 
 
@@ -58,6 +60,7 @@ def order(request):
         current = CurrentTransaction()
         current.items = name
         current.price = price
+        current.category = id
         current.itemcount = 1
         current.save()
 
@@ -91,9 +94,27 @@ def get_current(request):
             'price': obj.price,
         })
         
-
     # Return the current value as a JSON response
     return JsonResponse(current_list, safe=False)
+
+@require_POST
+def stocks_update(request):
+     # Get the current value of the current variable
+    current = CurrentTransaction.objects.all()  # Replace this with your code to get the current value
+    # Convert the current value to a list of dictionaries
+
+    for obj in current:
+        match obj.category:
+            case 'breakfast':
+                items = Breakfast.objects.filter(item=obj.items)
+                for item in items:
+                    item.stock = 0
+                    item.save()
+            case _:
+                return render('dashboard/')
+                
+    # Return the current value as a JSON response
+    return render('dashboard/')
 
 def checkout(request):
     
