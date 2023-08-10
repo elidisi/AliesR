@@ -8,6 +8,8 @@ from django.http import HttpResponse
 import datetime
 from .utils import create_new_ref_number
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
+
 
 
 
@@ -132,6 +134,21 @@ def get_receipt_details(request, receipt_id):
 def inventory(request):
     form = loader.get_template("GUI/inventory.html") 
     return HttpResponse(form.render({},request))
+
+@require_POST
+def remove_from_cart(request):
+    # Get the item id from the request
+    item_id = request.POST.get('item_id')
+
+    # Get the cart item with the specified id
+    cart_item = CurrentTransaction.objects.filter(items=item_id).first()
+
+    # If the cart item exists, delete it
+    if cart_item:
+        cart_item.delete()
+
+    # Redirect back to the page that sent the request
+    return redirect('order')
 
 def queue(request):
     context = {

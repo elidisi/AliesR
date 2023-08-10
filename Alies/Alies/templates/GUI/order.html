@@ -252,7 +252,7 @@
                                 '{{item.stock}}',
                                 {% endfor %}];
                                 break;
-                        case 'vegatable':
+                        case 'vegetable':
                             var name = [
                                 {%for item in vegatable%}
                                 '{{item.name}}',
@@ -429,14 +429,50 @@
                             // Update the cartitems div
                             var cartitemsDiv = document.getElementById('cartitems');
                             cartitemsDiv.innerHTML = '';
+                            total = 0
                             for (var i = 0; i < current.length; i++) {
                                 var object = current[i];
-                                cartitemsDiv.innerHTML += '<div class="cart-item">' + object.items + '</div>';
-                                cartitemsDiv.innerHTML += '<div>' + object.price + '</div>';
+                                total = total+object.price
+                                var itemDiv = document.createElement('div');
+                                itemDiv.className = 'cart-item';
+                                itemDiv.innerHTML = object.items + ' - ' + object.price;
+                                var form = document.createElement('form');
+                                form.method = 'POST';
+                                form.action = '/remove_from_cart/';
+                                var csrfInput = document.createElement('input');
+                                csrfInput.type = 'hidden';
+                                csrfInput.name = 'csrfmiddlewaretoken';
+                                csrfInput.value = getCookie('csrftoken');
+                                form.appendChild(csrfInput);
+                                var itemIdInput = document.createElement('input');
+                                itemIdInput.type = 'hidden';
+                                itemIdInput.name = 'item_id';
+                                itemIdInput.value = object.items;
+                                form.appendChild(itemIdInput);
+                                var removeButton = document.createElement('input');
+                                removeButton.type = 'submit';
+                                removeButton.value = 'Remove';
+                                form.appendChild(removeButton);
+                                itemDiv.appendChild(form);
+                                cartitemsDiv.appendChild(itemDiv);
+                                
                             }
+                        var totalamount = document.getElementById('cart-total');
+                                totalamount.innerHTML = 'Total: PHP'+total
                         }
                     };
                     xhr.send();
+                }
+
+                function removeFromCart(itemId) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/remove_from_cart/');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+                    xhr.onload = function() {
+                        updateCartItems();
+                    };
+                    xhr.send('item_id=' + encodeURIComponent(itemId));
                 }
 
                 </script>
@@ -452,22 +488,16 @@
         </div>
 
         <script>
-    //document.getElementById("myButton").onclick = function() {
-       // document.getElementById("myDiv").style.display = "block";
-    //}
 </script>
 
         <!-- Right-side cart -->
         <div class="right-side">
             <h2>Cart</h2>
             <div class="cart-items" id="cartitems">
-                <form>
-
-
-                </form>
+               
                 <!-- Cart items will be dynamically added/removed here -->
             </div>
-            <div class="cart-total">
+            <div id="cart-total" class="cart-total">
                 <!-- Total amount and checkout button here -->
                 Total: ₱0.00
             </div>
@@ -475,7 +505,6 @@
             <a href="/checkout" class="checkout-btn"><center>Checkout</center></a>
         </div>
     </div>
-    <script> //var jsonData = {{breakfast|safe}} </script>
-    //<script src="{% static 'js\order2.js' %}"></script>
+    <script src="{% static 'js\order2.js' %}?version=1"></script>
 </body>
 </html>
