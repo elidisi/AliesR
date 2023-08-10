@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    window.onload = function(){
+    deleteAll();
+    
+    };</script>
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css\styles.css' %} ">
 </head>
@@ -30,6 +35,26 @@
       <a href="/history" class="btn">History</a>
       <a href="/admin" class="btn">Inventory</a>
     </div>
+
+    <script>
+      window.onload = function(){
+        deleteAll();
+        
+        };
+
+        function deleteAll(){
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/delete-all/');
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+          // Send the request to the server
+          xhr.send();
+          });
+
+
+
+    </script>
+
   </div>
 </body>
 </html>
