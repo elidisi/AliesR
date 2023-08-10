@@ -54,7 +54,9 @@
 
                     window.onload = function(){
                         updateCartItems()
+                        showitem('breakfast');
                         };
+
                     function showitem(id){
                         var name = [];
                         var imageurl = [];
@@ -64,7 +66,7 @@
                         //switch case per  item
                         switch(id){
                             case 'breakfast':
-                            var name = [
+                              var name = [
                                 {%for item in breakfast%}
                                 '{{item.name}}',
                                 {% endfor %}];
@@ -387,7 +389,18 @@
                 }
                 
 
-
+                {% comment %} function void() {
+                    var vpassword = document.getElementById("password").value;
+                  
+                    // Validate login credentials (Replace "your-correct-username" and "your-correct-password" with actual values)
+                    if (vpassword === "alies") {
+                      alert("Removed Successfully!");
+                      // Redirect to a different page after successful login
+                      window.location.href = "/dashboard"; // Replace "dashboard.html" with the page you want to redirect to
+                    } else {
+                      alert("Invalid credentials. Please try again.");
+                    }
+                  } {% endcomment %}
 
                 function getCookie(name) {
                     var value = "; " + document.cookie;
@@ -469,6 +482,7 @@
                     xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
                     xhr.onload = function() {
                         updateCartItems();
+                        
                     };
                     xhr.send('item_id=' + encodeURIComponent(itemId));
                 }
@@ -479,7 +493,8 @@
             <!-- Menu side -->
 
             <div class="menu-side" id="menulist">  
-               
+                <!--div value="Hotsilog" name="food" id="Hotsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Hotsilog', 85,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/hotsilog_0DSb7pY_dNkduN0.png"><label class="menu-item-details">Hotsilog</label><label name="price" value="85" class="menu-item-details">PHP85</label></div><div value="Cornsilog" name="food" id="Cornsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Cornsilog', 100,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/cornsilog_dpvYKiS.png"><label class="menu-item-details">Cornsilog</label><label name="price" value="100" class="menu-item-details">PHP100</label></div><div value="Spamsilog" name="food" id="Spamsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Spamsilog', 110,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/spamsilog_RCEFEfQ.jpg"><label class="menu-item-details">Spamsilog</label><label name="price" value="110" class="menu-item-details">PHP110</label></div><div value="Tocilog" name="food" id="Tocilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Tocilog', 100,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/tocilog_BubKWrw.png"><label class="menu-item-details">Tocilog</label><label name="price" value="100" class="menu-item-details">PHP100</label></div><div value="Longsilog" name="food" id="Longsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Longsilog', 100,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/longsilog_6fsNwfx.png"><label class="menu-item-details">Longsilog</label><label name="price" value="100" class="menu-item-details">PHP100</label></div><div value="Tapsilog" name="food" id="Tapsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Tapsilog', 130,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/tapsilog_FYN9CuX.jpg"><label class="menu-item-details">Tapsilog</label><label name="price" value="130" class="menu-item-details">PHP130</label></div><div value="Porksilog" name="food" id="Porksilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Porksilog', 140,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/porksilog_V9bAfr2.jpg"><label class="menu-item-details">Porksilog</label><label name="price" value="140" class="menu-item-details">PHP140</label></div><div value="Bangsilog" name="food" id="Bangsilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Bangsilog', 150,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/bangsilog_X0WdOem.jpg"><label class="menu-item-details">Bangsilog</label><label name="price" value="150" class="menu-item-details">PHP150</label></div><div value="Chicksilog" name="food" id="Chicksilog" class="menu-item" style="cursor:pointer;" onclick="addToCart('breakfast','Chicksilog', 140,onAddToCart())"><img class="menu-item img" src="../static/media/breakfast/chicsilog_B25piZ7.jpg"><label class="menu-item-details">Chicksilog</label><label name="price" value="140" class="menu-item-details">PHP140</label></div-->
+                <!--showitem(breakfast); -->
                 <!-- Menu items will be placed here -->
             </div>
            
