@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (username === "admin" && password === "admin") {
         alert("Login successful!");
         sessionStorage.setItem("isLoggedIn", "true");
-        var loginPage = document.getElementById("login");
-        loginPage.style.display = "none";
+        window.location.href = "/dashboard";
         // Redirect to a different page after successful login
       } else {
         alert("Invalid credentials. Please try again.");
@@ -49,8 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (username === "admin" && password === "admin") {
       alert("Login successful!");
       // Redirect to a different page after successful login
-      var loginPage = document.getElementById("login");
-      loginPage.style.display = "none";
+      window.location.href = "/dashboard";
     } else {
       alert("Invalid credentials. Please try again.");
     }

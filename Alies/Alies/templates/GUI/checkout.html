@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
+    var thisTotal = 0;
     window.onload = function(){
         updateCartItems();
         
@@ -50,8 +51,10 @@
                         var object = current[i];
                         cartitemsDiv.innerHTML += '<div class="item-window"><div class="item">' + object.items + " -- ₱"+ object.price +'</div></div>';
                         total = total +object.price
+                        thisTotal = total;
                     }
-                    cartitemsDiv.innerHTML += '<label class="item"> TOTAL:₱'+ total +'</label>';
+                    cartitemsDiv.innerHTML += '<label id = "total" class="item"> TOTAL:₱'+ total +'</label>';
+                  
                 }
             };
             xhr.send();
@@ -97,6 +100,18 @@
 
         }
 
+        function D_seniorCitizen(discount) {
+          var discountedTotal = (thisTotal - (thisTotal * discount));
+          var totalLabel = document.getElementById('total');
+          totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
+      }
+
+        function D_Handicap(discount) {
+          var discountedTotal = (thisTotal - (thisTotal * discount));
+          var totalLabel = document.getElementById('total');
+          totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
+      }
+
 
 
   </script>
@@ -129,15 +144,16 @@
       <div class="discount">
         <h2>Discount</h2>
         <div class="discount-buttons">
-          <button class="discount-button" id="senior-discount">Senior Citizen</button>
-          <button class="discount-button" id="disabled-discount">Disabled</button>
+          <button onclick= "highlight()" class="discount-button" id="senior-discount">Senior Citizen</button>
+          
+          <button onclick= "highlight_handi()" class="discount-button" id="handi-discount">Handicap</button>
         </div>
       </div>
       <div class="payment">
         <h2>Mode of Payment</h2>
         <div class="payment-buttons">
-          <button class="payment-button" id="gcash">GCash</button>
-          <button class="payment-button" id="cash">Cash</button>
+          <button onclick = "MOP_Gcash()" class="payment-button" id="gcash">GCash</button>
+          <button onclick = "MOP_Cash()" class="payment-button" id="cash">Cash</button>
         </div>
       </div>
       {% csrf_token %}
@@ -145,5 +161,6 @@
     </div>
   </div>
 
+  <script src = '{% static 'js\checkout.js' %}'> </script>
 </body>
 </html>
