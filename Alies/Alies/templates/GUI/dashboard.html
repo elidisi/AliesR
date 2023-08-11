@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  {% block head %}
   <head>
     <title>Dashboard</title>
     <link
@@ -10,39 +9,10 @@
       href="{% static 'css\styles.css' %}?=version1 "
     />
   </head>
-  {% endblock %}
-  <body>
-    <div id="login">
-      <div class="login-container">
-        <img
-          src="{% static 'media\logo.png'%}"
-          alt="Logo Image"
-          width="300px"
-          height="300px"
-        />
-        <div class="input-box">
-          <input
-            type="text"
-            request="POST"
-            id="username"
-            placeholder="Username"
-            onkeydown="checkEnter(event)"
-          />
-          <input
-            type="password"
-            request="POST"
-            id="password"
-            placeholder="Password"
-            onkeydown="checkEnter(event)"
-          />
-          <button id="login-btn" type="submit" request="POST">Login</button>
-        </div>
-      </div>
-      <script src="{% static 'js\login.js' %}"></script>
+
       <!-- Link the JavaScript file -->
     </div>
 
-    {% block content %}
     <header>
       <div class="menubar">
         <!-- Add your menu bar content here -->
@@ -52,7 +22,7 @@
           <img src="{% static 'media\mlogo.png' %}" alt="Center Image" />
         </div>
         <div class="menu-right">
-          <button onclick="logout()" class="rtnbtn">LOGOUT</a>
+          <a  href="/" class="rtnbtn">LOGOUT</a>
         </div>
       </div>
       
@@ -71,12 +41,9 @@
       <script>
         window.onload = function () {
           deleteAll();
-          var isLoggedIn = sessionStorage.getItem("isLoggedIn");
-  if (isLoggedIn === "true") {
-    var loginPage = document.getElementById("login");
-    loginPage.style.display = "none";
-  }
+
         };
+
 
         function deleteAll() {
           var xhr = new XMLHttpRequest();
@@ -103,6 +70,5 @@
       }
       </script>
     </div>
-    {% endblock %}
   </body>
 </html>
