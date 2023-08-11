@@ -449,6 +449,7 @@
                                 form.appendChild(itemIdInput);
                                 var removeButton = document.createElement('input');
                                 removeButton.type = 'submit';
+                                removeButton.onclick = 'prompt("Enter Void Password")'
                                 removeButton.value = 'Remove';
                                 form.appendChild(removeButton);
                                 itemDiv.appendChild(form);
