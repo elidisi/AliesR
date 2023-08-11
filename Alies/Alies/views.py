@@ -12,12 +12,6 @@ from django.views.decorators.http import require_POST
 from django.db.models import F
 
 
-
-
-
-
-
-
 def dashboard(request):
     context = {
         'breakfast': Breakfast.objects.all()
@@ -63,15 +57,15 @@ def order(request):
         current.category = id
         current.itemcount = 1
         current.save()
-
+            
         JsonResponse({'status': 'success'})
 
         
     form = loader.get_template("GUI/order.html") 
     return HttpResponse(form.render(context,request))
 
-@csrf_exempt
 def delete_all(request):
+    print("hi")
     if request.method == 'POST':
         # Delete all objects of MyModel
         CurrentTransaction.objects.all().delete()
@@ -106,9 +100,11 @@ def stocks_update(request):
     for obj in current:
         match obj.category:
             case 'breakfast':
-                items = Breakfast.objects.filter(item=obj.items)
+                items = Breakfast.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    print(obj.items)
+                    print(item)
+                    item.stock = F('stock') - 1
                     item.save()
             case 'noodles':
                 items = Noodle.objects.filter(item=obj.items)
@@ -172,10 +168,10 @@ def stocks_update(request):
                     item.save()
                     
             case _:
-                return render('dashboard/')
+                return redirect('dashboard')
                 
     # Return the current value as a JSON response
-    return render('dashboard/')
+    return redirect('dashboard')
 
 def checkout(request):
     

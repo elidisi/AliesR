@@ -59,8 +59,18 @@ body {
     align-items: center; /* Center text vertically */
     justify-content: center; /* Center text horizontally */
     flex: 1; /* Take up all available space */
-    bu
+
   }
+
+  /* Styling for the menu bar at the top */
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #875D0F;
+  color: #fff;
+  padding: 10px;
+}
   
   /* Change the button color on hover */
   .btn:hover {
@@ -71,6 +81,84 @@ body {
   .bottom-row .btn {
     margin-right: 10px;
   }
+
+  .menu-left img {
+    max-height: 100px;
+}
+
+/* Styling for the center image in the menu bar */
+.menu-center img {
+    max-height: 100px;
+}
+
+/* Styling for the return button in the menu bar */
+.rtnbtn{
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+} 
+
+  .rtnbtn{
+    border: solid black 3px;
+    padding: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #EEC06A;
+} 
   
-  
-  
+  #login{
+    height: 100vw;
+    width: 100vw;
+    z-index: 99999999;
+    background-color: #FAF0CA;
+    position: fixed;
+  }
+
+    /* The container holding the login elements */
+    .login-container {
+      text-align: center;
+      background-color: #faf0ca; /* Change the container background color here */
+    }
+    
+    /* The logo image styles */
+    .login-container img {
+      /*max-width: 70px;*/
+      margin-bottom: 20px; /* Adjust the space between the image and the inputs */
+    }
+    
+    /* The input box styles */
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      margin-right: 30vw;
+      margin-left: 35vw;
+    }
+    
+    /* The input field styles */
+    .input-box input {
+      padding: 10px;
+      margin-bottom: 10px; /* Adjust the space between the inputs */
+      border: 1px solid #ccc; /* Change the input border color here */
+      border-radius: 4px;
+    }
+    
+    /* The button styles */
+    .input-box button {
+      padding: 10px;
+      background-color: #F4D35E; /* Change the button background color here */
+      color: #fff; /* Change the button text color here */
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    /* Optional: Add hover effects */
+    .input-box button:hover {
+      background-color: #0056b3; /* Change the button background color on hover */
+    }

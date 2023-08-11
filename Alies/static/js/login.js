@@ -1,3 +1,18 @@
+window.onload = function () {
+  var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  if (isLoggedIn === "true") {
+    var loginPage = document.getElementById("login");
+    loginPage.style.display = "none";
+  }
+};
+
+function logout() {
+  // Clear the sessionStorage flag
+  sessionStorage.removeItem("isLoggedIn");
+
+  // Redirect to the login page
+  window.location.reload();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Add event listener to the login button
@@ -9,8 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
       // Validate login credentials (Replace "your-correct-username" and "your-correct-password" with actual values)
       if (username === "admin" && password === "admin") {
         alert("Login successful!");
+        sessionStorage.setItem("isLoggedIn", "true");
+        var loginPage = document.getElementById("login");
+        loginPage.style.display = "none";
         // Redirect to a different page after successful login
-        window.location.href = "/dashboard"; // Replace "dashboard.html" with the page you want to redirect to
       } else {
         alert("Invalid credentials. Please try again.");
       }
@@ -32,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (username === "admin" && password === "admin") {
       alert("Login successful!");
       // Redirect to a different page after successful login
-      window.location.href = "/dashboard"; // Replace "dashboard.html" with the page you want to redirect to
+      var loginPage = document.getElementById("login");
+      loginPage.style.display = "none";
     } else {
       alert("Invalid credentials. Please try again.");
     }
