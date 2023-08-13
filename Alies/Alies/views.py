@@ -107,62 +107,62 @@ def stocks_update(request):
                     item.stock = F('stock') - 1
                     item.save()
             case 'noodles':
-                items = Noodle.objects.filter(item=obj.items)
+                items = Noodle.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'yangchow':
-                items = Yangchow.objects.filter(item=obj.items)
+                items = Yangchow.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'wings':
-                items = Wing.objects.filter(item=obj.items)
+                items = Wing.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'sisig':
-                items = Sisig.objects.filter(item=obj.items)
+                items = Sisig.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'pork':
-                items = Pork.objects.filter(item=obj.items)
+                items = Pork.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'chicken':
-                items = Chicken.objects.filter(item=obj.items)
+                items = Chicken.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'beef':
-                items = Beef.objects.filter(item=obj.items)
+                items = Beef.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'seafood':
-                items = Seafood.objects.filter(item=obj.items)
+                items = Seafood.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'vegatable':
-                items = Vegetable.objects.filter(item=obj.items)
+                items = Vegetable.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'addons':
-                items = Addon.objects.filter(item=obj.items)
+                items = Addon.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'drinks':
-                items = Drink.objects.filter(item=obj.items)
+                items = Drink.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
             case 'snacks':
-                items = Snack.objects.filter(item=obj.items)
+                items = Snack.objects.filter(name=obj.items)
                 for item in items:
                     item.stock = 0
                     item.save()
