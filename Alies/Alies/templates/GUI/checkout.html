@@ -9,8 +9,8 @@
   <script>
     var thisTotal = 0;
     window.onload = function(){
+      addPaymentButtonListeners();
         updateCartItems();
-        
         };
     
         function getCookie(name) {
@@ -32,7 +32,9 @@
             xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
             //send data, final price, and mode of payment to server
             xhr.send('text=' + encodeURIComponent(compiled) + '&final_price=' + encodeURIComponent(final_price) + '&mode_of_payment=' + encodeURIComponent(mode_of_payment));
+            window.location.href='/dashboard';
         };
+
           function updateCartItems() {
             // Create an AJAX request
             var xhr = new XMLHttpRequest();
@@ -53,7 +55,8 @@
                         thisTotal = total;
                     }
                     cartitemsDiv.innerHTML += '<label id = "total" class="item"> TOTAL:₱'+ total +'</label>';
-                  
+                    final_price = total;
+
                 }
             };
             xhr.send();
@@ -61,11 +64,12 @@
           
 function proceed(text){          
   alert("Order has been saved");
-  window.location.href='/dashboard';
-  var final_price = get_discounted_price(); // Get the final price after applying discounts
-  var mode_of_payment = get_mode_of_payment(); // Get the selected mode of payment
-  addToreceipts(text, final_price, mode_of_payment); // Pass the final price and mode of payment as arguments to addToreceipts function
   updateStocks();
+  var final = get_discounted_price(); // Get the final price after applying discounts
+  var mode_of_payment = get_mode_of_payment(); // Get the selected mode of payment
+  addToreceipts(text, final, mode_of_payment); // Pass the final price and mode of payment as arguments to addToreceipts function
+
+
 };
 
         function updateStocks(callback){
@@ -100,7 +104,7 @@ function proceed(text){
 
         }
 
-        var final_price = 0;
+        var final_price = thisTotal;
 
         function D_seniorCitizen(discount) {
             var discountedTotal = (thisTotal - (thisTotal * discount));
@@ -116,11 +120,35 @@ function proceed(text){
             final_price = discountedTotal; // Update the final price
         }
 
-        function get_mode_of_payment(){
-          var mode_of_payment = document.querySelector(".payment-button.active").id; // Get the selected mode of payment
-          return mode_of_payment; // Return the mode of payment
+        function get_discounted_price(){
+          return final_price;
+
         }
 
+        function get_mode_of_payment() {
+          var mode_of_payment = document.querySelector(".payment-button.active");
+          if (mode_of_payment) {
+              return mode_of_payment.id; // Return the selected mode of payment
+          } else {
+              // Handle the case where no mode of payment is selected
+              alert("Please select a mode of payment before proceeding.");
+              return null;
+          }
+      }
+
+      function addPaymentButtonListeners() {
+        var paymentButtons = document.querySelectorAll(".payment-button");
+        for (var i = 0; i < paymentButtons.length; i++) {
+            paymentButtons[i].addEventListener("click", function() {
+                // Remove the active class from all payment buttons
+                for (var j = 0; j < paymentButtons.length; j++) {
+                    paymentButtons[j].classList.remove("active");
+                }
+                // Add the active class to the clicked button
+                this.classList.add("active");
+            });
+        }
+    }
 
   </script>
   <title>Checkout</title>
@@ -169,6 +197,6 @@ function proceed(text){
     </div>
   </div>
 
-  <script src = '{% static 'js\checkout.js' %}'> </script>
+  <script src = '{% static 'js\checkout.js' %}'></script>
 </body>
 </html>

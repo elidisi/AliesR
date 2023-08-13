@@ -30,9 +30,16 @@ body {
   .menu-right img {
     max-height: 100px;
   }
+
+    /* Styling for the right image in the menu bar */
+    .menu-right2 {
+      margin-left: 100px;
+    }
+    
   
   /* Styling for the return button */
   .rtnbtn {
+    margin-top: 100px;
     border: solid black 3px;
     padding: 15px; /* Reduced padding for smaller buttons */
     border-radius: 30px; /* Adjusted border radius for smaller buttons */
@@ -40,6 +47,22 @@ body {
     font-size: 18px; /* Reduced font size for smaller buttons */
     color: black;
     background-color: #EEC06A;
+    margin-left: 10px;
+
+  }
+
+
+
+  .export {
+    border: solid black 3px;
+    padding: 15px; /* Reduced padding for smaller buttons */
+    border-radius: 30px; /* Adjusted border radius for smaller buttons */
+    text-decoration: none;
+    font-size: 18px; /* Reduced font size for smaller buttons */
+    color: black;
+    background-color: #EEC06A;
+    margin-right: 10px;
+
   }
   
   /* Styling for the main container */

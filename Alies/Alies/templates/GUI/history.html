@@ -8,19 +8,28 @@
     <link rel="stylesheet" href="{% static 'css\history.css' %}">
 </head>
 <body>
-    <!-- Menubar -->
-    <div class="menubar">
-        <!-- Add your menu bar content here -->
-        <div class="menu-left">
-            <img src="{% static 'media\logo.png' %}" alt="Left Image">
-        </div>
-        <div class="menu-center">
-            <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
-        </div>
-        <div class="menu-right">
-            <a href="/dashboard" class="rtnbtn">Return</a>
-        </div>
+<!-- Menubar -->
+<div class="menubar">
+    <!-- Add your menu bar content here -->
+    <div class="menu-left">
+        <img src="{% static 'media\logo.png' %}" alt="Left Image">
     </div>
+    <div class="menu-center">
+        <img src="{% static 'media\mlogo.png' %}" alt="Center Image">
+    </div>
+    <div style="display: flex; align-items: center;">
+    <div class="menu-right2">
+        <form action="{% url 'export_data' %}" method="post">
+            {% csrf_token %}
+            <input class = "export "type="submit" value="Export Data">
+        </form>
+    </div>
+    <div class="menu-right">
+        
+        <a href="/dashboard" class="rtnbtn">Return</a>
+    </div>
+</div>
+</div>
 
 
         <!-- Sidebar -->

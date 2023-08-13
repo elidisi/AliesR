@@ -10,6 +10,26 @@ from .utils import create_new_ref_number
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.db.models import F
+import csv
+
+def export_to_csv(model_classes, filename):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+
+    writer = csv.writer(response)
+    for ModelClass in model_classes:
+        writer.writerow([ModelClass.__name__])
+        writer.writerow(['Name', 'Price', 'Stock', 'Image URL'])
+        for obj in ModelClass.objects.all():
+            writer.writerow([obj.name, obj.price, obj.stock, obj.imageURL.url])
+        writer.writerow([])
+
+    return response
+
+
+def export_data(request):
+    model_classes = [Breakfast, Noodle, Sisig, Yangchow, Wing, Pork, Chicken, Beef, Seafood, Vegetable, Snack, Addon, Drink]
+    return export_to_csv(model_classes, 'data.csv')
 
 
 def dashboard(request):
@@ -109,62 +129,62 @@ def stocks_update(request):
             case 'noodles':
                 items = Noodle.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'yangchow':
                 items = Yangchow.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'wings':
                 items = Wing.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'sisig':
                 items = Sisig.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'pork':
                 items = Pork.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'chicken':
                 items = Chicken.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'beef':
                 items = Beef.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'seafood':
                 items = Seafood.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'vegatable':
                 items = Vegetable.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'addons':
                 items = Addon.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'drinks':
                 items = Drink.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
             case 'snacks':
                 items = Snack.objects.filter(name=obj.items)
                 for item in items:
-                    item.stock = 0
+                    item.stock = F('stock') - 1
                     item.save()
                     
             case _:

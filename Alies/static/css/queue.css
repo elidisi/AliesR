@@ -107,6 +107,9 @@ body {
 
 /*Style for done button*/
 .done-button {
+    width: 100px; /* Set the width of the button to 100 pixels */
+    margin: 0 auto; /* Center the button by setting equal margins on both sides */
+    display: block; /* Display the button as a block-level element */
     border: solid black 3px;
     padding: 10px;
     border-radius: 30px;
