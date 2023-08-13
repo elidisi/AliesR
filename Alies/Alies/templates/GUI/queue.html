@@ -25,16 +25,17 @@
     <!-- Queue Area -->
     <div class="queue-area">
         {% for receipt in receipts %}
-
-        <li>
-            <div class="queue-box"><h3>Order {{ receipt.ref_num }}:</h3> <pre style="overflow:visible">{{ receipt.items }}</pre><form action="{% url 'update_receipt_status' receipt.ref_num %}" method="post">
-                {% csrf_token %}
-                <input  type="submit" value="Done" class="done-button">
-            </form></div>
-            
-        </li>
-    {% endfor %}
-    </div>
+    <li>
+        <div class="queue-box">
+            <h3>Order {{ receipt.ref_num }}:</h3>
+            <pre style="overflow:visible;margin-top: 5px;">{{ receipt.items }}</pre>
+        </div>
+        <form action="{% url 'update_receipt_status' receipt.ref_num %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Done" class="done-button">
+        </form>
+    </li>
+{% endfor %}
     <link rel="stylesheet" href="{% static 'css\queue.css' %}?version=1">
 
 </body>

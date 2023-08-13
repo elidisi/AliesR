@@ -176,14 +176,26 @@ def stocks_update(request):
 def checkout(request):
     
     if request.method == 'POST':
-        # Retrieve the data from the POST request
+        # Retrieve the data, final price, and mode of payment from the POST request
         id = request.POST.get('compiled')
-        receipt_text = ''
+        final_price = request.POST.get('final_price')
+        mode_of_payment = request.POST.get('mode_of_payment')
+        
+        # Get the data for the receipt
+        date = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        items = []
         total = 0
         for item in CurrentTransaction.objects.all():
-            receipt_text += f'{item.items} - {item.price}\n'
+            items.append({'name': item.items, 'price': item.price})
             total = total + item.price
-        receipt_text += f'total = {total}'
+
+        # Format the receipt text
+        receipt_text = f'Alies Kitchen\n{date}\n\n'
+        for item in items:
+            receipt_text += f'{item["name"]:<20} ₱{item["price"]:>7.2f}\n'
+        receipt_text += f'\n{"Original Total:":<20} ₱{total:>7.2f}\n'
+        receipt_text += f'{"Final Price:"} ₱{final_price}\n'
+        receipt_text += f'{"Mode of Payment:":<20} {mode_of_payment}\n'
 
         # Update your model or perform other actions here
         current = Receipt(items=receipt_text)
@@ -191,7 +203,6 @@ def checkout(request):
         current.ref_num = create_new_ref_number()
         current.save()
 
-        JsonResponse({'status': 'success'})
     form = loader.get_template("GUI/checkout.html") 
     return HttpResponse(form.render({},request))
 

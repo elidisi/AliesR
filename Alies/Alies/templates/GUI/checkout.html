@@ -23,17 +23,16 @@
         function goBack() {
             window.history.back();
           };
-        
-          function addToreceipts(compiled){  
+
+
+          function addToreceipts(compiled, final_price, mode_of_payment){  
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/checkout/');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-        //send data to server
-        xhr.send('text=' + encodeURIComponent(compiled));
-
-          };
-        
+            //send data, final price, and mode of payment to server
+            xhr.send('text=' + encodeURIComponent(compiled) + '&final_price=' + encodeURIComponent(final_price) + '&mode_of_payment=' + encodeURIComponent(mode_of_payment));
+        };
           function updateCartItems() {
             // Create an AJAX request
             var xhr = new XMLHttpRequest();
@@ -60,13 +59,14 @@
             xhr.send();
         };
           
-        function proceed(text){          
-            alert("Order has been saved");
-            window.location.href='/dashboard';
-            addToreceipts(text);
-            updateStocks();
-        };
-
+function proceed(text){          
+  alert("Order has been saved");
+  window.location.href='/dashboard';
+  var final_price = get_discounted_price(); // Get the final price after applying discounts
+  var mode_of_payment = get_mode_of_payment(); // Get the selected mode of payment
+  addToreceipts(text, final_price, mode_of_payment); // Pass the final price and mode of payment as arguments to addToreceipts function
+  updateStocks();
+};
 
         function updateStocks(callback){
             var xhr = new XMLHttpRequest();
@@ -100,18 +100,26 @@
 
         }
 
+        var final_price = 0;
+
         function D_seniorCitizen(discount) {
-          var discountedTotal = (thisTotal - (thisTotal * discount));
-          var totalLabel = document.getElementById('total');
-          totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
-      }
-
+            var discountedTotal = (thisTotal - (thisTotal * discount));
+            var totalLabel = document.getElementById('total');
+            totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
+            final_price = discountedTotal; // Update the final price
+        }
+        
         function D_Handicap(discount) {
-          var discountedTotal = (thisTotal - (thisTotal * discount));
-          var totalLabel = document.getElementById('total');
-          totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
-      }
+            var discountedTotal = (thisTotal - (thisTotal * discount));
+            var totalLabel = document.getElementById('total');
+            totalLabel.textContent = 'TOTAL: ₱' + discountedTotal;
+            final_price = discountedTotal; // Update the final price
+        }
 
+        function get_mode_of_payment(){
+          var mode_of_payment = document.querySelector(".payment-button.active").id; // Get the selected mode of payment
+          return mode_of_payment; // Return the mode of payment
+        }
 
 
   </script>

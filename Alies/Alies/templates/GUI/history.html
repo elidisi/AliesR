@@ -27,28 +27,31 @@
         <div class="sidebar">
             <select class="transaction-tab" id="receipt-select" onchange="updateReceiptDetails()">
                 <option value="">--Please choose an option--</option>
-                {% for receipt in receipts %}
+                {% for receipt in receipts reversed %} <!-- Add reversed keyword to loop through the receipts list in reverse order -->
                     <option value="{{ receipt.ref_num}}">{{ receipt.date }}</option>
                 {% endfor %}
             </select>
-            
-            <!-- Rectangular tabs for different transaction orders -->
-            <!-- Add more transaction tabs as needed -->
         </div>
 
         <!-- Order details -->
+        
         <div class="main-content">
             <!-- Order details will be displayed here -->
+            <!-- Display more order details here -->
             <div id= "order-details" class="order-details">
-                <!--<h2>Order #123</h2>
-                <p>Total: ₱250.00</p>
-                <p>Payment: Credit Card</p>-->
-                <!-- Display more order details here -->
+                
             </div>
         </div>
     </div>
 
     <script>
+
+        var orderDetails = document.getElementById("order-details");
+
+// Check if there are any items within the order details element
+
+
+
         function updateReceiptDetails() {
             var selectElement = document.getElementById('receipt-select');
             var receiptId = selectElement.value;

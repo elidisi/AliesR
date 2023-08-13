@@ -79,7 +79,7 @@ body {
   
   /* Add spacing between the buttons in the bottom row */
   .bottom-row .btn {
-    margin-right: 10px;
+    margin-right: 40px;
   }
 
   .menu-left img {
@@ -89,6 +89,7 @@ body {
 /* Styling for the center image in the menu bar */
 .menu-center img {
     max-height: 100px;
+    margin-left: 100px;
 }
 
 /* Styling for the return button in the menu bar */

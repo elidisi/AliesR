@@ -73,14 +73,18 @@ body {
 
 /* Styling for the queue boxes */
 .queue-box {
-    width: 200px;
-    height: 200px;
-    background-color: #EEC06A;
+    max-width: 100%; /* Set the maximum width of the pre element to 100% of its parent element */
+    white-space: pre-wrap; /* Allow line breaks to wrap long lines */
+    word-wrap: break-word; /* Break long words if necessary */
+    overflow: auto; /* Add scrollbars if the content overflows */
+    height: 300px;
+    background-color: #EEC06A;  
     border: solid black 3px;
     border-radius: 10px;
     text-align: center;
-    margin: 10px;
+    margin: 3px;
     padding: 10px;
+     overflow-x: hidden;
 }
 
 /* Styling for the queue-box content */
@@ -93,6 +97,11 @@ body {
 /* Styling for the queue-box payment details */
 .queue-box p {
     margin: 5px 0;
+    font-size: 14px;
+}
+
+.queue-box pre {
+    margin-top: 5px;
     font-size: 14px;
 }
 
