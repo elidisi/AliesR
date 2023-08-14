@@ -1,1 +1,0 @@
-web: gunicorn Alies-Kitchen.wsgi --log-file -
